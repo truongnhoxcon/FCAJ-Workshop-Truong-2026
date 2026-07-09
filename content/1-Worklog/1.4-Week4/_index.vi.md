@@ -1,59 +1,27 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+date: 2026-05-11
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiêu về IAM, Cognito, SSO, AWS Organizations.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc                                                                                                                                                                                                                                                                                                                               | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                                                                      |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| 2   | - Học lý thuyết về IAM, Cognito, SSO, Organizations. <br> - Tìm hiểu dịch vụ AWS KMS và AWS Security Hub. <br> - Kích hoạt AWS Security Hub, đánh giá điểm số bảo mật.                                                                                                                                                                  | 11/05/2026   | 11/05/2026      | <https://www.youtube.com/playlist?list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> <br> <https://000018.awsstudygroup.com/> |
+| 3   | - Quản lý Tags chuyên sâu trên Console và CLI, sử dụng Resource Group. <br> - Khởi tạo VPC, Security Group, EC2 và thiết lập Webhook gửi thông báo về Slack. <br> - Viết IAM Role cho Lambda. Tạo các hàm Lambda để tự động tắt (Stop) và bật (Start) EC2.                                                                              | 12/05/2026   | 12/05/2026      | <https://000027.awsstudygroup.com/> <br> <https://000022.awsstudygroup.com/>                                        |
+| 4   | - Tạo IAM User, thiết lập Policy/Role và thử tính năng Switch Roles. <br> - Truy cập console đa Region, kiểm tra sự chặt chẽ của Policy khi thiếu Tag hợp lệ.                                                                                                                                                                           | 13/05/2026   | 13/05/2026      | <https://000028.awsstudygroup.com/>                                                                                 |
+| 5   | - Tạo Restriction Policy, tài khoản IAM Limited User và kiểm thử giới hạn. <br> - Tạo Policy, Group, S3 Bucket và mã hóa với AWS KMS. Thiết lập AWS CloudTrail và dùng Amazon Athena truy vấn nhật ký. <br> - Thực hiện kiểm tra và chia sẻ dữ liệu đã được mã hóa trên không gian lưu trữ S3.                                          | 14/05/2026   | 14/05/2026      | <https://000030.awsstudygroup.com/> <br> <https://000033.awsstudygroup.com/>                                        |
+| 6   | <br> - Khởi tạo IAM Group, IAM Users, kiểm tra quyền hạn. Tạo Admin IAM Role và chuyển đổi vai trò (Switch role), giới hạn Switch role theo IP và thời gian, dọn dẹp tài nguyên. <br> - Khởi tạo EC2, S3 bucket, tạo người dùng IAM mới và Access Key. Sử dụng Access Key và giải pháp bảo mật hơn bằng cách dùng IAM Role gán cho EC2. | 15/05/2026   | 15/05/2026      | <https://000044.awsstudygroup.com/> <br> <https://000048.awsstudygroup.com/>                                        |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Thiết lập hàng rào bảo mật chặt chẽ bằng IAM, biết cách giới hạn quyền và kiểm soát việc tạo tài nguyên bằng Tagging.
+* Tiết kiệm chi phí đám mây thông qua việc tự động hóa lịch bật/tắt máy chủ bằng AWS Lambda kết hợp cảnh báo qua Slack.
+* Cấu hình thành công các giới hạn bảo mật nâng cao, chỉ cho phép người dùng chuyển đổi vai trò khi truy cập từ một IP cụ thể hoặc trong một khoảng thời gian được định trước.
+* Hiểu được sự khác biệt giữa việc cấp quyền trực tiếp bằng Access Key so với việc sử dụng IAM Role an toàn hơn khi cho phép EC2 tương tác với các dịch vụ khác.

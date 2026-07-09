@@ -1,59 +1,28 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+date: 2026-05-18
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu về các dịch vụ Cơ sở dữ liệu trên AWS.
+* Thiết lập được luồng xử lý và thu thập dữ liệu tự động với S3
+* Nắm vững thao tác quản trị Amazon DynamoDB, khám phá các mẫu thiết kế nâng cao và ứng dụng trực tiếp vào kiến trúc Serverless, Event-Driven.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu về Database Concepts, kiến trúc và ứng dụng của Amazon RDS cùng Amazon Aurora. <br> - Tìm hiểu về Amazon Redshift và dịch vụ ElastiCache. | 13/07/2026 | 13/07/2026 | <https://www.youtube.com/playlist?list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+| 3 | - Tạo hạ tầng mạng VPC, thiết lập Security Group cho EC2 và tạo DB Subnet Group cho RDS. <br> -  Khởi tạo máy chủ EC2, khởi chạy RDS database instance, tiến hành triển khai ứng dụng. <br> - Thao tác sao lưu/khôi phục và dọn dẹp hệ thống. | 14/07/2026 | 14/07/2026 | <https://000005.awsstudygroup.com/> |
+| 4 | - Cấu hình Microsoft SQL Server và Oracle làm cơ sở dữ liệu nguồn.  <br> - Thực hiện chuyển đổi lược đồ sang môi trường đích MySQL, tạo tác vụ Serverless Migration, giám sát log hoạt động và thực hành xử lý sự cố về áp lực bộ nhớ, lỗi bảng. | 15/07/2026 | 15/07/2026 | <https://000043.awsstudygroup.com/> |
+| 5 | - Khởi tạo S3 Bucket, tạo luồng phân phối và thu thập dữ liệu bằng công cụ AWS Glue Crawler. <br> - Thực hiện truy vấn, phân tích dữ liệu trực tiếp với Amazon Athena, xuất biểu đồ trực quan hóa với Amazon QuickSight. | 16/07/2026 | 16/07/2026 | <https://000035.awsstudygroup.com/> |
+| 6 | - Khám phá giao diện điều khiển của Amazon DynamoDB và thực hành sao lưu dữ liệu. <br> - Triển khai các mẫu thiết kế nâng cao, thực hành xây dựng ứng dụng phi máy chủ toàn cầu và thiết lập kiến trúc hướng sự kiện với DynamoDB. | 17/07/2026 | 17/07/2026 | <https://000039.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Có khả năng tự triển khai, vận hành, bảo mật và thiết lập quy trình sao lưu an toàn cho các hệ thống cơ sở dữ liệu trên nền tảng AWS.
+* Nắm vững cách cấu hình cơ chế Serverless Migration.
 

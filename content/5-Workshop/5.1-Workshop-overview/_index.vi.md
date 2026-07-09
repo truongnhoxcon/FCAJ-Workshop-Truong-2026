@@ -1,19 +1,32 @@
 ---
 title : "Giới thiệu"
-date : 2024-01-01 
+date : 2024-06-29
 weight : 1
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+#### Kiến trúc hệ thống AntiGroup
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+Nền tảng **AntiGroup** được thiết kế dựa trên kiến trúc Cloud Native và Microservices chạy Serverless Container trên AWS. Toàn bộ hạ tầng mạng được thiết lập bảo mật nhiều tầng trên Multi-AZ.
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+#### Sơ đồ kiến trúc hạ tầng
+Kiến trúc chi tiết của nền tảng được mô tả qua sơ đồ dưới đây:
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+![AntiGroup AWS Architecture](/images/2-Proposal/Diagram.png)
+
+#### Tổng quan các bước thực hiện
+Trong workshop này, chúng ta sẽ lần lượt đi qua các cấu hình chi tiết:
+1. **AWS Secrets Manager**: Lưu trữ an toàn các thông tin nhạy cảm.
+2. **VPC và Mạng**: Thiết lập mạng ảo Multi-AZ, NAT Gateway và S3 Gateway Endpoint.
+3. **Security Groups**: Phân lớp các quy tắc bảo mật cổng kết nối.
+4. **S3 Buckets & IAM Roles**: Tạo các kho lưu trữ và vai trò phân quyền.
+5. **RDS Database**: Khởi tạo cơ sở dữ liệu quan hệ PostgreSQL ở chế độ Multi-AZ.
+6. **ElastiCache Redis**: Khởi tạo cụm bộ nhớ đệm cache và pub/sub ở chế độ Multi-AZ.
+7. **ECR & Push Images**: Build và push các container images của Unified Backend lên ECR.
+8. **Application Load Balancer**: Tạo Target Groups và cấu hình định tuyến cho API & WebSocket.
+9. **CloudFront Distribution**: Cấu hình HTTPS Ingress toàn cầu và tích hợp AWS WAF bảo vệ.
+10. **ECS Fargate**: Cấu hình Task Definitions và chạy Services với 2 Tasks song song.
+11. **Dọn dẹp tài nguyên**: Trình tự xóa bỏ các tài nguyên tránh phát sinh chi phí.
+
+

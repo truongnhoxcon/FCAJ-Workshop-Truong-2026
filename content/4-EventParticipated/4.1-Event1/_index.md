@@ -1,126 +1,63 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-09
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “FCAJ Community Day”
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The FCAJ Community Day event was organized to create a playground and a connection space for the technology-passionate community (especially young people, students, and freshers). The core goals of this meetup were:
+- To create opportunities for members to boldly share knowledge, practice self-confidence, and improve public speaking skills.
+- To share practical knowledge ranging from optimizing learning efficiency, applying AI/Prompt Engineering effectively, to standard software development processes.
+- To provide career orientation (Mindset & Foundation) to help young developers prepare practical skills for stepping into corporate environments.
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+The event featured high-quality speakers covering diverse topics:
+- Huynh Hoang Long - Admin of FCAJ
+- Nguyen Tuan Thinh - DevOps/Cloud Engineer First Cloud AI Journey
+- Anh Khang - Solutions Architect, Cloud Kinetics
+- Chị Thảo - Software Developer, Ngân hàng Quốc tế VIB
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Dopamine "Hacking" Technique
+To avoid procrastination in learning, turn learning into a "Dopamine gamble" by creating curiosity (drawing small rewards), breaking down knowledge blocks to avoid overwhelm, and using the fear of loss (maintaining a daily learning Streak).
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### Optimizing Prompt Engineering
+To prevent AI from hallucinating and outputting generic results, a good Prompt must have a complete structure: **Role + Task + Context + Format + Constraints**.
 
-#### Transitioning to modern application architecture – Microservices
+#### AI Amplifying Real Capabilities
+In the AI era, businesses do not look for people who only copy-paste code from ChatGPT. They need professionals with extremely solid Foundations, a mindset of always asking "Why?", the ability to learn from mistakes, and especially Integrity in their work.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
-
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
-
-#### Domain-Driven Design (DDD)
-
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### AI-Powered Software Design Method (BMX Method)
+Solves the issue where continuous prompts cause the AI to forget Context and generate "junk code". This method breaks down the project according to standards (Epic, Story) and delegates authority to individual AI Agents playing distinct roles (PM, Architect, Dev, Tester) to let the AI operate in a controlled manner.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Self-Management
+Learn how to apply the "2-minute rule" and trick the amygdala (breaking down goals) to eliminate procrastination.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+#### Using AI Like a Pro
+Understand how AI consumes tokens, how to set up clear contexts, and use AI to train and optimize productivity rather than relying blindly on it.
 
-#### Technical Architecture
+#### Workplace Mindset
+Salary is not everything (Benefit is not just Salary). The value of a person starting out in the workplace lies in 5 circles: Salary, Experience (practical experience), Network, Knowledge, and Quality (Talent).
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+#### Controlling AI in Programming
+The core of using AI to generate code does not lie in how fast it types code, but in how carefully humans write requirements and design documents (Document/PRD/Architect) so the AI can execute them accurately.
 
 ### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Improve personal productivity**: Set up a progress tracker (streak) for skills to learn (such as new AWS services). Perform any tasks that take less than 2 minutes immediately.
+- **Write structured Prompts**: When asking ChatGPT or Claude to debug or write documentation, always provide context, desired formats, and specific input data to save response time.
+- **Train Foundation & Integrity mindset**: When receiving tasks from superiors, instead of just finishing the "surface level", ask *Why do we use this service instead of another? What edge cases are not handled yet?* Always work with the highest sense of responsibility even when unsupervised.
+- **Agile project management**: When working on personal or company projects, write clear requirements and break them down into Epics/Stories before feeding them to the AI to generate code in small portions, making it easy to control bugs.
 
 ### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+- Felt the enthusiasm of the speakers when bringing "real combat" stories — not empty theories but directly addressing problems students/new grads frequently encounter (procrastination, AI power illusion, salary expectations).
+- The event provided massive motivation to change the working mindset. Realized that cultivating long-term vision and connecting with teammates is more important than just coding alone.
+- Experienced an open community space where people do not judge mistakes but encourage sharing to progress together.

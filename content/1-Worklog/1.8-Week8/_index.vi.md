@@ -1,59 +1,27 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+date: 2026-06-08
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu về Amazon CloudWatch.
+* Sử dụng AWS CloudTrail để ghi lại toàn bộ lịch sử thao tác và lệnh gọi API trên hệ thống.
+* Ứng dụng AWS X-Ray để theo dõi, phân tích và debug các luồng request di chuyển trong kiến trúc Microservices.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc                                                                                                                                                                           | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                      |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------- |
+| 2   | - Tìm hiểu Amazon CloudWatch                                                                                                                                                        | 08/06/2026   | 08/06/2026      | <https://000008.awsstudygroup.com/> |
+| 3   | - Tìm hiểu về Grafana. <br> - Thực hành cài đặt và giám sát hệ thống bằng Grafana.                                                                                                  | 09/06/2026   | 09/06/2026      | <https://000029.awsstudygroup.com/> |
+| 4   | - Thực hành khởi tạo và kích hoạt VPC Flow Logs để giám sát luồng dữ liệu mạng ra/vào hạ tầng VPC, đảm bảo hệ thống không bị thất thoát dữ liệu hay có các kết nối mạng bất thường. | 10/06/2026   | 10/06/2026      | <https://000074.awsstudygroup.com/> |
+| 5   | - Thực hành đồng bộ CloudWatch và X-Ray để tạo thành một bảng điều khiển giám sát toàn diện cho ứng dụng.                                                                           | 11/06/2026   | 11/06/2026      | <https://000085.awsstudygroup.com/> |
+| 6   | - Thực hành xây dựng kiến trúc hướng sự kiện với Amazon SNS và SQS                                                                                                                  | 12/06/2026   | 12/06/2026      | <https://000077.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Thiết lập được quy trình kiểm toán minh bạch trên tài khoản AWS nhờ CloudTrail.
+* Có khả năng dùng X-Ray giúp thu hẹp phạm vi lỗi và rút ngắn đáng kể thời gian sửa chữa ứng dụng.

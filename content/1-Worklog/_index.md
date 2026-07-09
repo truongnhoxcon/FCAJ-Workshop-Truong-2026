@@ -1,39 +1,39 @@
 ---
-title: "Worklog"
-date: 2024-01-01
+title: "Internship Report"
+date: 2026-04-20
 weight: 1
 chapter: false
-pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# Internship Report
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+### Student Information:
+&emsp; **Full Name:** Nguyen Nhat Truong
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+&emsp; **Phone Number:** 0346041107
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+&emsp; **Email:** nhattruong130824@gmail.com
 
-**Week 2:** [Doing task A...](1.2-week2/)
+&emsp; **University:** Ho Chi Minh City University of Technology (HUTECH)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+&emsp; **Major:** Information Technology
 
-**Week 4:** [Doing task C...](1.4-week4/)
+&emsp; **Class:** 22DTHJA2
 
-**Week 5:** [Doing task D...](1.5-week5/)
+&emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
-**Week 6:** [Doing task E...](1.6-week6/)
+&emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-**Week 7:** [Doing task G...](1.7-week7/)
+&emsp; **Internship Duration:** From 20/04/2026 to 10/07/2026
 
-**Week 8:** [Doing task H...](1.8-week8/)
+![Your profile picture](/images/avatar.jpg)
 
-**Week 9:** [Doing task I...](1.9-week9/)
+### Report Content
 
-**Week 10:** [Doing task L...](1.10-week10/)
-
-**Week 11:** [Doing task M...](1.11-week11/)
-
-**Week 12:** [Doing task N...](1.12-week12/)
+1.  [Worklog](1-Worklog/)
+2.  [Proposal](2-Proposal/)
+3.  [BlogsPosted](3-BlogsPosted/)
+4.  [Events Participated](4-EventParticipated/)
+5.  [Workshop](5-Workshop/)
+6.  [Self-evaluation](6-Self-evaluation/)
+7.  [Sharing and Feedback](7-Feedback/)

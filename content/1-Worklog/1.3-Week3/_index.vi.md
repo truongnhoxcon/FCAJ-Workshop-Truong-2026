@@ -1,59 +1,25 @@
 ---
 title: "Worklog Tuần 3"
-date: 2024-01-01
-weight: 1
+date: 2026-05-04
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu các dịch vụ lưu trữ trên AWS
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc                                                                                                                                                                                                                                                        | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                             |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------------------------------------------------------------------- |
+| 2   | - Tìm hiểu về S3: <br> &emsp; + Access Point, Storage Class. <br> &emsp; + Static Website, CORS.                                                                                                                                                                 | 04/05/2026   | 04/05/2026      | <https://www.youtube.com/playlist?list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+| 3   | - Cài đặt VMWare Workstation. <br> - Thực hành trích xuất máy ảo từ On-premises, tải lên AWS và triển khai thành một máy chủ ảo EC2 thực tế từ AMI. <br> - Trích xuất máy ảo từ AWS EC2 mang về lại môi trường On-premises.                                      | 05/05/2026   | 05/05/2026      | <https://000014.awsstudygroup.com/>                                        |
+| 4   | - Khởi tạo Storage Gateway, tạo File Shares trên AWS và Mount các File shares này trực tiếp lên máy tính ở môi trường On-premises.                                                                                                                               | 06/05/2026   | 06/05/2026      | <https://000024.awsstudygroup.com/>                                        |
+| 5   | - Khởi tạo hệ thống tệp đa vùng sẵn sàng cao (Multi-AZ) sử dụng cả ổ cứng SSD và HDD. <br> - Tạo các File shares mới, tiến hành chạy kiểm tra hiệu năng và giám sát hiệu năng. <br> - Khử trùng lặp dữ liệu để tiết kiệm dung lượng và bật tính năng sao lưu ẩn. | 07/05/2026   | 07/05/2026      | <https://000025.awsstudygroup.com/>                                        |
+| 6   | - Thực hành quản lý phiên truy cập của người dùng và các tệp đang mở. <br> - Thiết lập hạn mức lưu trữ cho từng người dùng, cấu hình mở rộng thông lượng và dung lượng.                                                                                          | 08/05/2026   | 08/05/2026      | <https://000025.awsstudygroup.com/>                                        |
 
 ### Kết quả đạt được tuần 3:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu về dịch vụ S3
+* Thực hiện thành công việc di chuyển hai chiều (Import/Export) một máy ảo thực tế giữa môi trường cục bộ (VMWare) và đám mây AWS.
+* Cấu hình thành công hệ thống Backup tự động có kèm thông báo.

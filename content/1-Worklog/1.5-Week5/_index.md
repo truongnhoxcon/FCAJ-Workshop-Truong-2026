@@ -1,57 +1,27 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-05-18
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand Database concepts on AWS.
+* Set up automated data processing and collection pipelines with Amazon S3.
+* Master Amazon DynamoDB administrative operations, explore advanced design patterns, and apply them directly to Serverless and Event-Driven architectures.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2   | - Learn about Database Concepts, architecture, and applications of Amazon RDS and Amazon Aurora. <br> - Research Amazon Redshift and ElastiCache. | 18/05/2026 | 18/05/2026 | <https://www.youtube.com/playlist?list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
+| 3   | - Create a VPC network, set up Security Groups for EC2, and configure a DB Subnet Group for RDS. <br> - Initialize an EC2 server, launch an RDS database instance, and deploy applications. <br> - Perform backup/restore and system cleanup. | 19/05/2026 | 19/05/2026 | <https://000005.awsstudygroup.com/> |
+| 4   | - Configure Microsoft SQL Server and Oracle as source databases. <br> - Perform schema conversion to MySQL target environment, create Serverless Migration tasks, monitor logs, and practice troubleshooting memory pressure and table errors. | 20/05/2026 | 20/05/2026 | <https://000043.awsstudygroup.com/> |
+| 5   | - Initialize S3 Buckets, create data distribution and collection flows using AWS Glue Crawler. <br> - Query and analyze data directly with Amazon Athena, and export visualization dashboards using Amazon QuickSight. | 21/05/2026 | 21/05/2026 | <https://000035.awsstudygroup.com/> |
+| 6   | - Explore the Amazon DynamoDB console and practice backing up data. <br> - Deploy advanced design patterns, practice building global serverless applications, and set up event-driven architectures with DynamoDB. | 22/05/2026 | 22/05/2026 | <https://000039.awsstudygroup.com/> |
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Acquired the ability to deploy, operate, secure, and set up safe backup processes for database systems on the AWS platform.
+* Mastered configuring Serverless Migration mechanisms.
