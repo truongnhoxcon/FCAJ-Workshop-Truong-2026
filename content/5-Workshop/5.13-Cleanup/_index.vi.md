@@ -1,9 +1,9 @@
 ---
 title: "Dọn dẹp tài nguyên"
 date: 2024-06-29
-weight: 12
+weight: 13
 chapter: false
-pre: " <b> 5.12. </b> "
+pre: " <b> 5.13. </b> "
 ---
 
 Để tránh phát sinh các chi phí không mong muốn trên tài khoản AWS của bạn sau khi kết thúc workshop, hãy tiến hành dọn dẹp các tài nguyên theo thứ tự ngược lại dưới đây.

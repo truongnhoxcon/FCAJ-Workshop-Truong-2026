@@ -1,9 +1,9 @@
 ---
 title: "Resource Cleanup"
 date: 2024-06-29
-weight: 12
+weight: 13
 chapter: false
-pre: " <b> 5.12. </b> "
+pre: " <b> 5.13. </b> "
 ---
 
 To avoid incurring unwanted charges on your AWS account after completing the workshop, please clean up all provisioned resources in the following recommended order.

@@ -127,7 +127,7 @@ aws ecs create-service \
   --cluster realtime-collab-dev \
   --service-name unified-backend \
   --task-definition realtime-collab-unified-backend \
-  --desired-count 2 \
+  --desired-count 1 \
   --launch-type FARGATE \
   --network-configuration 'awsvpcConfiguration={subnets=[REPLACE_PRIVATE_SUBNET_1_ID,REPLACE_PRIVATE_SUBNET_2_ID],securityGroups=[REPLACE_UNIFIED_BACKEND_SG_ID],assignPublicIp=DISABLED}' \
   --load-balancers '[
