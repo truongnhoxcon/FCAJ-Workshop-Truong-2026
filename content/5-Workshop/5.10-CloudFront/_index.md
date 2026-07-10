@@ -29,19 +29,19 @@ Go to **CloudFront** ➔ **Distributions** ➔ click **Create distribution**.
 
 The new CloudFront wizard simplifies creation using a 5-step process targeting the S3 Frontend bucket. Complete this initial workflow:
 
-###### Step 1: Choose a plan
+##### Step 1: Choose a plan
 - Select the **Free ($0/month)** plan ➔ Click **Next**.
 
 ![Create Distribution - Choose Plan](/images/5-Workshop/5.10-CloudFront/cf-origin-1.png)
 
-###### Step 2: Get started
+##### Step 2: Get started
 - **Distribution name**: Keep the default or set it to `s3-origin`.
 - **Distribution type**: Select **Single website or app** (optimized for standard single-region SPAs).
 - **Domain (Route 53 managed domain)**: Leave blank (Optional) ➔ Click **Next**.
 
 ![Create Distribution - Get Started](/images/5-Workshop/5.10-CloudFront/cf-origin-2.png)
 
-###### Step 3: Specify origin
+##### Step 3: Specify origin
 - **Origin type**: Select **Amazon S3**.
 - **S3 origin**: Choose or enter your S3 frontend bucket (e.g., `realtime-collab-frontend-<account-id>.s3.us-east-1.amazonaws.com`).
 - **Origin path**: Leave blank.
@@ -52,13 +52,13 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 
 ![Create Distribution - Specify Origin](/images/5-Workshop/5.10-CloudFront/cf-origin-3.png)
 
-###### Step 4: Enable security
+##### Step 4: Enable security
 - Keep the default options for the Free plan ➔ Click **Next**.
 
-###### Step 5: Review and create
+##### Step 5: Review and create
 - Review all the configuration details ➔ Click **Create distribution**.
 
-###### Step 6: Copy policy
+##### Step 6: Copy policy
 1. Navigate to the newly created Distribution ➔ Select the **Origins** tab.
 2. Select the S3 Origin (e.g., `realtime-collab-frontend-...`) ➔ click **Edit**.
 3. Scroll down to the **Bucket policy** section; the yellow banner and the **Copy policy** button will be displayed for you to copy.
@@ -77,7 +77,7 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 
 Once the distribution is created, click on it from the list to add the ALB dynamic backend origin and configure custom routing behaviors:
 
-###### 1. Add ALB Backend Origin
+##### 1. Add ALB Backend Origin
 1. Go to the **Origins** tab ➔ Click **Create origin**.
 
 ![Configure ALB Backend Origin](/images/5-Workshop/5.10-CloudFront/cf-alb-2.png)
@@ -121,7 +121,7 @@ Go to the **Behaviors** tab. There is a default `Default (*)` behavior pointing 
 
   ![Configure Custom Error Response 403](/images/5-Workshop/5.10-CloudFront/cf-error-2.png)
 
-###### 3. Configure Custom Error Responses (For React SPA Client Routing)
+##### 3. Configure Custom Error Responses (For React SPA Client Routing)
 Dynamic client-side routes (like /servers, /login) do not exist physically in S3. CloudFront must rewrite 403 or 404 errors to index.html to allow the SPA's router to load:
 
 1. Select the **Error pages** tab ➔ Click **Create custom error response**.

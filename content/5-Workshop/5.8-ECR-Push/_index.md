@@ -66,5 +66,6 @@ This script will automatically:
 
 Once completed, you will see:
 
-![ECR Repository Docker Image List](/images/5-Workshop/5.8-ECR-Push/ecr-images.png)
+![ECR Repository Docker Image List](/images/5-Workshop/5.8-ECR-Push/ecr-deploy-terminal.png)
 Copy this URI for the ECS Task Definitions configuration step.
+
