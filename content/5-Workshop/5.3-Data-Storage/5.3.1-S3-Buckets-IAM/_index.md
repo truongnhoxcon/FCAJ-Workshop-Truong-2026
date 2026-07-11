@@ -15,12 +15,14 @@ We will create 2 S3 Buckets for static web hosting (frontend) and user files sto
 Navigate to **S3** ➔ **Create bucket**. Create the following 2 buckets in **us-east-1** (Replace '<account-id>' with your 12-digit AWS Account ID).
 
 #### 1. Frontend Static Hosting Bucket: `realtime-collab-frontend-<account-id>`
+![Create S3 Frontend - Name and Region](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
+
 - **Block public access**: Block all public access **➔ Enabled** (Secure storage, CloudFront uses OAC to read).
 - **Bucket Versioning**: Disabled (No versioning needed).
-- **Encryption**: SSE-S3 (AES-256)
-
-![Create S3 Frontend - Name and Region](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
 ![Create S3 Frontend - Block Public Access and Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-2.png)
+
+- **Encryption type**: Choose SSE-S3 (AES-256)
+- Click **Create bucket**.
 ![Create S3 Frontend - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-3.png)
 
 - **Bucket Policy** (Permissions tab ➔ Bucket policy - allows CloudFront OAC to read objects):
@@ -49,9 +51,15 @@ Navigate to **S3** ➔ **Create bucket**. Create the following 2 buckets in **us
 ![Configure Bucket Policy for Frontend](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-policy.png)
 
 #### 2. Application File Storage Bucket: `realtime-collab-files-<account-id>`
+![Create S3 Files - Name and Region](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-1.png)
+
 - **Block public access**: Block all public access **➔ Enabled**
 - **Bucket Versioning**: Enabled
-- **Encryption**: SSE-S3 (AES-256)
+![Create S3 Files - Block Public Access and Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-2.png)
+
+- **Encryption type**: SSE-S3 (AES-256)
+- Click **Create bucket**.
+![Create S3 Files - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-3.png)
 
 Additional configuration for the files bucket:
 - **Bucket Policy** (Permissions tab ➔ Bucket policy):
@@ -77,15 +85,31 @@ Additional configuration for the files bucket:
 - **Lifecycle rules** (Management tab ➔ Create lifecycle rule):
 ![Configure S3 Files CORS](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-cors.png)
 
-  - **Rule 1**: Name `archive-workspace-files` | Prefix: `workspace-` | Action: Transition to Glacier storage after 90 days.
+  - **Rule 1**: Name `archive-workspace-files` | Prefix: `workspace-`
 
   ![Configure Lifecycle Rule 1 for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
+
+  - Action: Transition current versions of objects to Glacier storage after 90 days:
+    - Under **Lifecycle rule actions**, select:
+      - `Transition current versions of objects between storage classes` (to transition current versions of files).
+      - Check the acknowledgment warning checkbox: `I acknowledge that this lifecycle rule will incur a transition cost per request.`
+    - Under **Transition current versions of objects between storage classes**, configure:
+      - **Choose storage class transitions**: Select `Glacier Flexible Retrieval (formerly Glacier)`.
+      - **Days after object creation**: Enter `90`.
+
   ![Configure Lifecycle Rule 1 for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
 
-  - **Rule 2**: Name `abort-incomplete-multipart` | Prefix: Empty | Action: Abort incomplete multipart uploads after 7 days.
+  - **Rule 2**: Name `abort-incomplete-multipart` | **Choose a rule scope**: Select **Apply to all objects in the bucket** | Check the acknowledgment warning: **I acknowledge that this rule will apply to all objects in the bucket.**
 
-![Configure Lifecycle Rule 2 for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
-![Configure Lifecycle Rule 2 for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
+  ![Configure Lifecycle Rule 2 for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
+
+  - **Actions Configuration**:
+    - Under **Lifecycle rule actions**, select: **Delete expired object delete markers or incomplete multipart uploads**.
+    - Under **Delete expired object delete markers or incomplete multipart uploads**, select:
+      - **Delete incomplete multipart uploads**
+      - **Number of days**: Enter `7`.
+
+  ![Configure Lifecycle Rule 2 for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
 
 - **Cross-origin resource sharing (CORS)** (Permissions tab ➔ CORS):
   ```json

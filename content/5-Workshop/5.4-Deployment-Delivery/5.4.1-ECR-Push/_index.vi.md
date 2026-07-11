@@ -42,18 +42,18 @@ Nhằm tự động dọn dẹp các image cũ để tối ưu hóa chi phí lư
 ##### Rule 2: Chỉ giữ lại 30 image có tag mới nhất
 - **Rule priority**: `2`
 - **Description**: `Keep only 30 most recent tagged images`
-- **Image status**: Tagged ➔ Prefix list: nhập `v, latest, sha-`
+- **Image status**: Tagged (prefix matching) ➔ Prefix list: nhập `v, latest, sha-`
+![Cấu hình Lifecycle Rule 2 - Phần 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-2.png)
+
 - **Match criteria**: Image count ➔ Count number: 30
 - **Action**: Expire
-
-![Cấu hình Lifecycle Rule 2 - Phần 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-2.png)
 ![Cấu hình Lifecycle Rule 2 - Phần 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-3.png)
 
 ---
 
 #### 3. Build & Push Docker Images lên ECR
 
-Mở terminal trên máy phát triển (yêu cầu máy đã cài đặt Docker và AWS CLI đã cấu hình quyền xác thực), di chuyển tới thư mục gốc của dự án `Real-time-Streaming-Collaboration` và chạy lệnh sau:
+Mở terminal trên máy phát triển (yêu cầu máy đã cài đặt Docker và AWS CLI đã cấu hình quyền xác thực), di chuyển tới thư mục gốc của dự án AntiCollab và chạy lệnh sau:
 
 ```bash
 bash deploy-ecr.sh us-east-1

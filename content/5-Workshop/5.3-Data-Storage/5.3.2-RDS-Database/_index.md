@@ -68,21 +68,26 @@ Go to **RDS** ➔ **Databases** ➔ **Create database**. Configure with the foll
 
 ![Database Master Password settings](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-settings-2.png)
 - **Instance configuration**: db.t3.medium
+
+![Database Instance Type](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-instance.png)
+
 - **Storage**:
   - Storage type: `gp3` | Allocated storage: `100 GB`
   - **Enable storage autoscaling**: **Check** | Maximum storage threshold: `500 GB`
 
-![Database Instance Type](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-instance.png)
 ![Database Storage Autoscaling](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-storage.png)
 - **Connectivity**:
   - **VPC**: realtime-collab-dev
   - **DB Subnet group**: realtime-collab-dev-db-subnet-group
   - **Public access**: Select No
-  - **VPC security group (existing)**: Choose rds-sg (Remove the default security group).
-- **Database authentication**: Password authentication
-
 ![Database Connectivity Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-network-1.png)
+  - **VPC security group (existing)**: Choose rds-sg (Remove the default security group).
 ![Database Connectivity Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-network-2.png)
+
+- **Additional monitoring settings**:
+  - **Log exports**: Check PostgreSQL log
+![Database Additional Configuration Part 3](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-3.png)
+
 - **Additional configuration**:
   - **Initial database name**: `realtime_collab`
   - **DB parameter group**: Select `realtime-collab-dev-pg15-ssl`
@@ -90,18 +95,9 @@ Go to **RDS** ➔ **Databases** ➔ **Create database**. Configure with the foll
 ![Database Additional Configuration Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-1.png)
   - **Backup**:
     - Backup retention period: 7 days
-    - Backup window: Select 03:00 - 04:00 UTC
+    - Backup window: Select Choose a window | **Start time**: 3:00 (UTC) | **Duration**: 1
     - **Copy tags to snapshots**: **Check**
-
+ 
 ![Database Additional Configuration Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-2.png)
-  - **Encryption**: **Check** Enable encryption
-  - **Monitoring**:
-    - **Enable Enhanced Monitoring**: **Check** (Granularity: 60 seconds, create new Monitoring role).
-  - **Performance Insights**: **Check** Enable Performance Insights (Retention: 7 days).
-  - **Log exports**: **Check** PostgreSQL log
-  - **Maintenance**: **Check** Auto minor version upgrade
-  - **Deletion protection**: Uncheck (for easy cleanup during this workshop).
-
-![Database Additional Configuration Part 3](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-3.png)
 
 Click **Create database**. The initialization takes about **10 - 15 minutes**. Once the status changes to Available, copy the **Endpoint** to use as DB_HOST in subsequent steps.

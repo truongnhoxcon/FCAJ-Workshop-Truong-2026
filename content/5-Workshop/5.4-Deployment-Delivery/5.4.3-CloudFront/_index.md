@@ -66,9 +66,13 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 ![Copy policy from CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-1.png)
 ![Copy policy from CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/copy-policy.png)
 
-4. Select S3 bucket Permissions tab ➔ scroll down to Bucket policy ➔ click Edit ➔ paste the copied JSON policy ➔ click Save changes.
-
+4. Configure Bucket Policy on S3:
+- Go to the **Amazon S3** console and click on your **`realtime-collab-frontend-<account-id>`** bucket.
+- Select the **Permissions** tab from the top menu bar.
+- Scroll down to the **Bucket policy** section and click the **Edit** button.
 ![Paste S3 Bucket Policy](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-2.png)
+- Paste the copied JSON policy from CloudFront into the policy editor.
+- Click **Save changes** at the bottom of the page.
 ![Origins Tab List Screen](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-alb-1.png)
 
 ---

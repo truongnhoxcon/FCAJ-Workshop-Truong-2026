@@ -42,18 +42,18 @@ To automatically clean up old images and optimize storage costs, select the repo
 ##### Rule 2: Keep only 30 most recent tagged images
 - **Rule priority**: `2`
 - **Description**: `Keep only 30 most recent tagged images`
-- **Image status**: Tagged ➔ Prefix list: enter `v, latest, sha-`
+- **Image status**: Tagged (prefix matching) ➔ Prefix list: enter `v, latest, sha-`
+![Configure Lifecycle Rule 2 - Part 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-2.png)
+
 - **Match criteria**: Image count ➔ Count number: 30
 - **Action**: Expire
-
-![Configure Lifecycle Rule 2 - Part 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-2.png)
 ![Configure Lifecycle Rule 2 - Part 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-3.png)
 
 ---
 
 #### 3. Build & Push Docker Image to ECR
 
-Open a terminal on your development machine (ensure Docker is running and AWS CLI is authenticated), navigate to the root directory of the `Real-time-Streaming-Collaboration` repository, and execute the following command:
+Open a terminal on your development machine (ensure Docker is running and AWS CLI is authenticated), navigate to the root directory of the `AntiCollab` repository, and execute the following command:
 
 ```bash
 bash deploy-ecr.sh us-east-1

@@ -63,17 +63,17 @@ Màn hình tạo mới hiện tại của CloudFront được thiết kế tối
 ##### Bước 6: Copy policy
 1. Truy cập vào Distribution vừa tạo ➔ Chọn tab **Origins**.
 2. Tích chọn S3 Origin (ví dụ: `realtime-collab-frontend-...`) ➔ Chọn **Edit**.
-3. Cuộn xuống mục **Bucket policy**, thông báo màu vàng kèm nút **Copy policy** sẽ xuất hiện lại để bạn sao chép.
-
 ![Copy policy từ CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-1.png)
-
+3. Cuộn xuống mục **Bucket policy**, thông báo màu vàng kèm nút **Copy policy** sẽ xuất hiện lại để bạn sao chép.
 ![Copy policy từ CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/copy-policy.png)
 
-4. Chọn tab Permissions ➔ cuộn xuống Bucket policy ➔ nhấp vào Edit ➔ dán chính sách JSON đã sao chép ➔ nhấp vào Save change.
-
-
+4. Cấu hình Bucket Policy trên S3:
+- Truy cập dịch vụ **Amazon S3** và nhấn chọn vào bucket **`realtime-collab-frontend-<account-id>`**.
+- Chọn tab **Permissions** ở thanh menu ngang phía trên.
+- Cuộn xuống mục **Bucket policy** và nhấn nút **Edit** ở bên phải.
 ![Dán Bucket Policy trong S3 Permissions](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-2.png)
-
+- Dán toàn bộ chính sách JSON đã copy ở CloudFront vào khung soạn thảo mã.
+- Nhấn **Save changes** ở cuối trang để lưu lại.
 ![Origins tab list](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-alb-1.png)
 
 ---

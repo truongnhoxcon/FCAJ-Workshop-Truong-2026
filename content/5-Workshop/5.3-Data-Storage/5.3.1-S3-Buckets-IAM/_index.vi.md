@@ -12,15 +12,17 @@ Chúng ta sẽ tạo 2 S3 Buckets phục vụ lưu trữ mã nguồn tĩnh (fron
 
 ### PHẦN 1 — Khởi tạo S3 Buckets
 
-Truy cập dịch vụ **S3** ➔ **Create bucket**. Tạo lần lượt 2 buckets ở vùng **us-east-1** (Thay thế '<account-id>' bằng 12 chữ số Account ID của bạn).
+Truy cập dịch vụ **S3** ➔ **Create bucket**. Tạo lần lượt 2 buckets ở vùng **us-east-1** (Thay thế `<account-id>` bằng 12 chữ số Account ID của bạn).
 
 #### 1. Bucket lưu trữ mã nguồn tĩnh Frontend: `realtime-collab-frontend-<account-id>`
+![Khởi tạo S3 Frontend - Tên và Vùng](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
+
 - **Block public access**: Block all public access **➔ Tích chọn** (Bảo mật tuyệt đối, CloudFront sử dụng OAC để đọc).
 - **Bucket Versioning**: Disabled (Không cần versioning).
-- **Encryption**: SSE-S3 (AES-256)
-
-![Khởi tạo S3 Frontend - Tên và Vùng](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
 ![Khởi tạo S3 Frontend - Block Public Access và Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-2.png)
+
+- **Encryption type**: Chọn SSE-S3 (AES-256)
+- Bấm **Create bucket**.
 ![Khởi tạo S3 Frontend - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-3.png)
 
 - **Bucket Policy** (Tab Permissions ➔ Bucket policy - Chính sách này sẽ cho phép CloudFront OAC được đọc file từ S3):
@@ -49,9 +51,15 @@ Truy cập dịch vụ **S3** ➔ **Create bucket**. Tạo lần lượt 2 bucke
 ![Cấu hình Bucket Policy cho Frontend](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-policy.png)
 
 #### 2. Bucket lưu trữ tệp tin người dùng: `realtime-collab-files-<account-id>`
+![Khởi tạo S3 Files - Tên và Vùng](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-1.png)
+
 - **Block public access**: Block all public access **➔ Tích chọn**
 - **Bucket Versioning**: Enabled
-- **Encryption**: SSE-S3 (AES-256)
+![Khởi tạo S3 Files - Block Public Access và Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-2.png)
+
+- **Encryption type**: SSE-S3 (AES-256)
+- Bấm **Create bucket**.
+![Khởi tạo S3 Files - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-3.png)
 
 Cấu hình bổ sung cho bucket lưu trữ tệp tin:
 - **Bucket Policy** (Tab Permissions ➔ Bucket policy):
@@ -77,17 +85,31 @@ Cấu hình bổ sung cho bucket lưu trữ tệp tin:
 - **Lifecycle rules** (Tab Management ➔ Create lifecycle rule):
 ![Cấu hình Bucket Policy cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-cors.png)
 
-  - **Rule 1**: Tên `archive-workspace-files` | Prefix: `workspace-` | Action: Chuyển sang lưu trữ Glacier sau 90 ngày.
+  - **Rule 1**: Tên `archive-workspace-files` | Prefix: `workspace-`
 
   ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
 
+  - **Cấu hình Actions**:
+    - Trong mục **Lifecycle rule actions**, tích chọn:
+      - Transition current versions of objects between storage classes (để cấu hình di chuyển phiên bản hiện tại).
+      - Tích chọn hộp kiểm cảnh báo: I acknowledge that this lifecycle rule will incur a transition cost per request.
+    - Trong mục **Transition current versions of objects between storage classes**, cấu hình:
+      - **Choose storage class transitions**: Chọn Glacier Flexible Retrieval (formerly Glacier).
+      - **Days after object creation**: Nhập `90`.
+
   ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
 
-  - **Rule 2**: Tên `abort-incomplete-multipart` | Prefix: Để trống | Action: Hủy các tệp tải lên dở dang sau 7 ngày.
+  - **Rule 2**: Tên `abort-incomplete-multipart` | **Choose a rule scope**: Chọn **Apply to all objects in the bucket** | Tích chọn hộp kiểm xác nhận cảnh báo: **I acknowledge that this rule will apply to all objects in the bucket.**
 
-![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
+  ![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
 
-![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
+  - **Cấu hình Actions**:
+    - Trong mục **Lifecycle rule actions**, tích chọn: **Delete expired object delete markers or incomplete multipart uploads**.
+    - Trong mục **Delete expired object delete markers or incomplete multipart uploads** hiện ra bên dưới, tích chọn:
+      - **Delete incomplete multipart uploads**
+      - **Number of days**: Nhập `7`.
+
+  ![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
 
 - **Cross-origin resource sharing (CORS)** (Tab Permissions ➔ CORS):
   ```json
