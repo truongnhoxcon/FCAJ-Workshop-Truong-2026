@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# AntiGroup Infrastructure Manual Deployment Guide
+# AntiCollab Infrastructure Manual Deployment Guide
 
 #### Overview
 
-In this workshop, you will manually deploy the entire infrastructure and services for **AntiGroup - Real-time Streaming Collaboration Platform** using the AWS Management Console.
+In this workshop, you will manually deploy the entire infrastructure and services for **AntiCollab - Real-time Streaming Collaboration Platform** using the AWS Management Console.
 
 The goal of this lab is to help you understand how to configure each infrastructure component corresponding to the project's Terraform source code, establish network connections, configure security, and manage data flows securely.
 

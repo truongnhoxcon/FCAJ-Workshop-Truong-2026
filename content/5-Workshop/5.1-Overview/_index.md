@@ -6,14 +6,14 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### AntiGroup Routing Architecture
+#### AntiCollab Routing Architecture
 
-The **AntiGroup** platform is designed based on a Cloud Native and Microservices architecture running serverless containers on AWS Fargate. The network infrastructure is secured at multiple levels across Multi-AZ.
+The **AntiCollab** platform is designed based on a Cloud Native and Microservices architecture running serverless containers on AWS Fargate. The network infrastructure is secured at multiple levels across Multi-AZ.
 
-#### Infrastructure Architecture Diagram
-The detailed architecture is represented by the following diagram:
+#### Network Architecture Diagram
+The detailed architecture of the platform is described in the diagram below:
 
-![AntiGroup AWS Architecture](/images/2-Proposal/Diagram.png)
+![AntiCollab AWS Architecture](/images/2-Proposal/Diagram.png)
 
 #### Workshop Roadmap
 In this workshop, we will go through the following configuration steps:

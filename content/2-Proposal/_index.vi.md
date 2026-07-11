@@ -6,13 +6,13 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-#### Nền tảng Chat & Streaming thời gian thực AntiGroup
+#### Nền tảng Chat & Streaming thời gian thực AntiCollab
 *Báo cáo đề xuất giải pháp kỹ thuật và hạ tầng cloud trên Amazon Web Services*
 
 ---
 
 ### 1. Giới thiệu tổng quan
-Dự án **AntiGroup** hướng tới xây dựng một nền tảng giao tiếp cộng đồng thời gian thực (Real-time Collaboration Platform) tương tự Discord, cho phép người dùng trao đổi tin nhắn văn bản, cập nhật trạng thái hoạt động trực tuyến, và tham gia các cuộc gọi thoại/gọi video trực tiếp. Nền tảng này được thiết kế để phục vụ cho các nhóm sinh viên học tập, nghiên cứu và trao đổi học thuật trong môi trường phòng lab.
+Dự án **AntiCollab** hướng tới xây dựng một nền tảng giao tiếp cộng đồng thời gian thực (Real-time Collaboration Platform) tương tự Discord, cho phép người dùng trao đổi tin nhắn văn bản, cập nhật trạng thái hoạt động trực tuyến, và tham gia các cuộc gọi thoại/gọi video trực tiếp. Nền tảng này được thiết kế để phục vụ cho các nhóm sinh viên học tập, nghiên cứu và trao đổi học thuật trong môi trường phòng lab.
 
 Để đảm bảo khả năng sẵn sàng cao (High Availability), độ trễ thấp dưới 200ms đối với tin nhắn, và khả năng co giãn linh hoạt theo lượng người dùng thực tế mà không đòi hỏi chi phí đầu tư hạ tầng máy chủ vật lý ban đầu lớn, hệ thống được thiết kế để triển khai toàn diện trên môi trường Cloud Native của **Amazon Web Services (AWS)**.
 
@@ -31,7 +31,7 @@ Bản đề xuất giải pháp kỹ thuật này tập trung giải quyết cá
 ### 3. Kiến trúc giải pháp
 Kiến trúc hệ thống Cloud-native trên AWS được thể hiện qua sơ đồ dưới đây:
 
-![AntiGroup AWS Architecture](/images/2-Proposal/Diagram.png)
+![AntiCollab AWS Architecture](/images/2-Proposal/Diagram.png)
 
 *Dịch vụ AWS sử dụng và Luồng hoạt động*
 - **Amazon VPC & Subnets (Multi-AZ)**: Xây dựng hạ tầng mạng an toàn Multi-AZ chia thành Public Subnets (chứa ALB, NAT Gateway) và Private Subnets bảo vệ các ứng dụng (ECS Fargate Tasks, RDS PostgreSQL, ElastiCache Redis).

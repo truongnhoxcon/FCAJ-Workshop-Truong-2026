@@ -7,11 +7,11 @@ pre: " <b> 5. </b> "
 ---
 
 
-# Hướng dẫn Triển khai hệ thống AntiGroup lên AWS Management Console
+# Hướng dẫn Triển khai hệ thống AntiCollab lên AWS Management Console
 
 #### Tổng quan
 
-Trong phần này, chúng ta sẽ thực hiện triển khai thủ công toàn bộ hạ tầng và các dịch vụ của nền tảng **AntiGroup - Real-time Streaming Collaboration Platform** thông qua AWS Management Console. 
+Trong phần này, chúng ta sẽ thực hiện triển khai thủ công toàn bộ hạ tầng và các dịch vụ của nền tảng **AntiCollab - Real-time Streaming Collaboration Platform** thông qua AWS Management Console. 
 
 Mục tiêu của bài lab là giúp hiểu rõ cách cấu hình từng thành phần hạ tầng tương đương với mã nguồn Terraform của dự án, thiết lập kết nối mạng, cài đặt bảo mật và quản lý luồng dữ liệu một cách an toàn.
 

@@ -6,14 +6,14 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Kiến trúc hệ thống AntiGroup
+#### Kiến trúc hệ thống AntiCollab
 
-Nền tảng **AntiGroup** được thiết kế dựa trên kiến trúc Cloud Native và Microservices chạy Serverless Container trên AWS. Toàn bộ hạ tầng mạng được thiết lập bảo mật nhiều tầng trên Multi-AZ.
+Nền tảng **AntiCollab** được thiết kế dựa trên kiến trúc Cloud Native và Microservices chạy Serverless Container trên AWS. Toàn bộ hạ tầng mạng được thiết lập bảo mật nhiều tầng trên Multi-AZ.
 
 #### Sơ đồ kiến trúc hạ tầng
 Kiến trúc chi tiết của nền tảng được mô tả qua sơ đồ dưới đây:
 
-![AntiGroup AWS Architecture](/images/2-Proposal/Diagram.png)
+![AntiCollab AWS Architecture](/images/2-Proposal/Diagram.png)
 
 #### Tổng quan các bước thực hiện
 Trong workshop này, chúng ta sẽ lần lượt đi qua các cấu hình chi tiết:

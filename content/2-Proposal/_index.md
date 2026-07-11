@@ -6,13 +6,13 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-#### AntiGroup Real-time Chat & Streaming Platform
+#### AntiCollab Real-time Chat & Streaming Platform
 *Technical Proposal & Cloud Infrastructure Design on Amazon Web Services*
 
 ---
 
 ### 1. Executive Summary
-The **AntiGroup** project aims to build a Discord-like real-time community collaboration platform, allowing users to exchange text messages, check online presence, and initiate voice/video group calls directly. The platform is tailored for students and researchers to collaborate within laboratory environments.
+The **AntiCollab** project aims to build a Discord-like real-time community collaboration platform, allowing users to exchange text messages, check online presence, and initiate voice/video group calls directly. The platform is tailored for students and researchers to collaborate within laboratory environments.
 
 To guarantee high availability, low messaging latency (under 200ms), and elastic scalability without excessive upfront hardware costs, the solution is designed to run natively on **Amazon Web Services (AWS)**.
 
@@ -34,7 +34,7 @@ This technical proposal focuses on resolving the following infrastructure challe
 ### 3. Solution Architecture
 The AWS infrastructure design is detailed below:
 
-![AntiGroup AWS Architecture](/images/2-Proposal/Diagram.png)
+![AntiCollab AWS Architecture](/images/2-Proposal/Diagram.png)
 
 *AWS Services Used & Data Flow*
 - **Amazon VPC & Subnets (Multi-AZ)**: Secure Multi-AZ network topology separated into Public Subnets (hosting ALB, NAT Gateway) and Private Subnets (hosting ECS Fargate Tasks, RDS PostgreSQL, and ElastiCache Redis).
