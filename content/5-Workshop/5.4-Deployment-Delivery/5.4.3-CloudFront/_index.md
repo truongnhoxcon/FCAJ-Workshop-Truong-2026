@@ -32,14 +32,14 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 ##### Step 1: Choose a plan
 - Select the **Free ($0/month)** plan ➔ Click **Next**.
 
-![Create Distribution - Choose Plan](/images/5-Workshop/5.10-CloudFront/cf-origin-1.png)
+![Create Distribution - Choose Plan](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-origin-1.png)
 
 ##### Step 2: Get started
 - **Distribution name**: Keep the default or set it to `s3-origin`.
 - **Distribution type**: Select **Single website or app** (optimized for standard single-region SPAs).
 - **Domain (Route 53 managed domain)**: Leave blank (Optional) ➔ Click **Next**.
 
-![Create Distribution - Get Started](/images/5-Workshop/5.10-CloudFront/cf-origin-2.png)
+![Create Distribution - Get Started](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-origin-2.png)
 
 ##### Step 3: Specify origin
 - **Origin type**: Select **Amazon S3**.
@@ -50,7 +50,7 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
   - **Origin access settings**: Choose **Origin access control settings (recommended)** ➔ click the **Create control setting** button, keep the default options, and click **Create**.
 - Click **Next**.
 
-![Create Distribution - Specify Origin](/images/5-Workshop/5.10-CloudFront/cf-origin-3.png)
+![Create Distribution - Specify Origin](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-origin-3.png)
 
 ##### Step 4: Enable security
 - Keep the default options for the Free plan ➔ Click **Next**.
@@ -63,13 +63,13 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 2. Select the S3 Origin (e.g., `realtime-collab-frontend-...`) ➔ click **Edit**.
 3. Scroll down to the **Bucket policy** section; the yellow banner and the **Copy policy** button will be displayed for you to copy.
 
-![Copy policy from CloudFront](/images/5-Workshop/5.10-CloudFront/cf-policy-1.png)
-![Copy policy from CloudFront](/images/5-Workshop/5.10-CloudFront/copy-policy.png)
+![Copy policy from CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-1.png)
+![Copy policy from CloudFront](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/copy-policy.png)
 
 4. Select S3 bucket Permissions tab ➔ scroll down to Bucket policy ➔ click Edit ➔ paste the copied JSON policy ➔ click Save changes.
 
-![Paste S3 Bucket Policy](/images/5-Workshop/5.10-CloudFront/cf-policy-2.png)
-![Origins Tab List Screen](/images/5-Workshop/5.10-CloudFront/cf-alb-1.png)
+![Paste S3 Bucket Policy](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-policy-2.png)
+![Origins Tab List Screen](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-alb-1.png)
 
 ---
 
@@ -80,7 +80,7 @@ Once the distribution is created, click on it from the list to add the ALB dynam
 ##### 1. Add ALB Backend Origin
 1. Go to the **Origins** tab ➔ Click **Create origin**.
 
-![Configure ALB Backend Origin](/images/5-Workshop/5.10-CloudFront/cf-alb-2.png)
+![Configure ALB Backend Origin](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-alb-2.png)
 
 2. Configure as follows:
    - **Origin domain**: Select or paste your ALB DNS Name (e.g., `realtime-collab-dev-alb-XXXXXXXX.us-east-1.elb.amazonaws.com`).
@@ -88,14 +88,14 @@ Once the distribution is created, click on it from the list to add the ALB dynam
    - **Protocol**: Select **HTTP only** (CloudFront routes traffic to the ALB via HTTP port 80).
    - **HTTP port**: Keep `80`.
 
-![Configure ALB Backend Origin](/images/5-Workshop/5.10-CloudFront/cf-behavior-1.png)
+![Configure ALB Backend Origin](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-behavior-1.png)
 
 3. Click **Create origin**.
 
 ###### 2. Configure Cache Behaviors (Routing Rules)
 Go to the **Behaviors** tab. There is a default `Default (*)` behavior pointing to your S3 origin. Create two additional behaviors for APIs and WebSockets:
 
-![Configure Behavior for Path /api/*](/images/5-Workshop/5.10-CloudFront/cf-behavior-2.png)
+![Configure Behavior for Path /api/*](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-behavior-2.png)
 
 * **Create Behavior 1 (For `/api/*` REST API)**:
   - Click **Create behavior**.
@@ -107,7 +107,7 @@ Go to the **Behaviors** tab. There is a default `Default (*)` behavior pointing 
   - **Origin request policy**: Select the AWS-managed **AllViewer** policy.
   - Click **Create behavior**.
 
-  ![Error Pages Tab Screen](/images/5-Workshop/5.10-CloudFront/cf-error-1.png)
+  ![Error Pages Tab Screen](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-error-1.png)
 
 * **Create Behavior 2 (For `/ws/*` WebSockets)**:
   - Click **Create behavior**.
@@ -119,14 +119,14 @@ Go to the **Behaviors** tab. There is a default `Default (*)` behavior pointing 
   - **Origin request policy**: Select **AllViewer**.
   - Click **Create behavior**.
 
-  ![Configure Custom Error Response 403](/images/5-Workshop/5.10-CloudFront/cf-error-2.png)
+  ![Configure Custom Error Response 403](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-error-2.png)
 
 ##### 3. Configure Custom Error Responses (For React SPA Client Routing)
 Dynamic client-side routes (like /servers, /login) do not exist physically in S3. CloudFront must rewrite 403 or 404 errors to index.html to allow the SPA's router to load:
 
 1. Select the **Error pages** tab ➔ Click **Create custom error response**.
 
-![Configure Custom Error Response 404](/images/5-Workshop/5.10-CloudFront/cf-error-3.png)
+![Configure Custom Error Response 404](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-error-3.png)
 
 2. Set up 403 error page:
    - **HTTP error code**: 403: Forbidden
@@ -134,7 +134,7 @@ Dynamic client-side routes (like /servers, /login) do not exist physically in S3
    - **Response page path**: `/index.html`
    - **HTTP response code**: `200: OK`
 
-   ![Custom Error Responses List Screen](/images/5-Workshop/5.10-CloudFront/cf-error-4.png)
+   ![Custom Error Responses List Screen](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-error-4.png)
 
 3. Click **Create custom error response** again for 404 error page:
    - **HTTP error code**: 404: Not Found
@@ -142,21 +142,21 @@ Dynamic client-side routes (like /servers, /login) do not exist physically in S3
    - **Response page path**: `/index.html`
    - **HTTP response code**: `200: OK`
 
-   ![General Settings Edit Button](/images/5-Workshop/5.10-CloudFront/cf-general-1.png)
+   ![General Settings Edit Button](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-general-1.png)
 
 ##### 4. Configure Root Object & IPv6
 1. Go to the **General** tab ➔ under the **Settings** section, click **Edit**.
 
-![Configure Default Root Object index.html](/images/5-Workshop/5.10-CloudFront/cf-general-2.png)
+![Configure Default Root Object index.html](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-general-2.png)
 
 2. Configure as follows:
    - **Default root object**: Enter **index.html** (Crucial to load the landing page from S3).
 
-   ![Default root object](/images/5-Workshop/5.10-CloudFront/cf-status.png)
+   ![Default root object](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-status.png)
 
 3. Click **Save changes**.
 
 
 Deployment will take **5 - 10 minutes**. Once the status changes to active, copy the **Distribution domain name** (e.g., `xxxxxxxxxxxx.cloudfront.net`). This is the final global HTTPS Endpoint to access your application.
 
-![CloudFront Distribution Completed Domain Name](/images/5-Workshop/5.10-CloudFront/cf-domain.png)
+![CloudFront Distribution Completed Domain Name](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-domain.png)

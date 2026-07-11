@@ -31,7 +31,7 @@ Sau khi tạo xong các nhóm bảo mật "vỏ", tiến hành chỉnh sửa cá
 - **Outbound Rules**:
   - Type: All traffic | Destination: `0.0.0.0/0`
 
-![Cấu hình inbound rule cho alb-sg](/images/5-Workshop/5.4-Security-Groups/alb-sg.png)
+![Cấu hình inbound rule cho alb-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/alb-sg.png)
 
 ##### 2.2 Rules cho unified-backend-sg
 - **Inbound Rules**:
@@ -39,17 +39,17 @@ Sau khi tạo xong các nhóm bảo mật "vỏ", tiến hành chỉnh sửa cá
 - **Outbound Rules**:
   - Type: All traffic | Destination: `0.0.0.0/0`
 
-![Cấu hình inbound rule cho unified-backend-sg](/images/5-Workshop/5.4-Security-Groups/unified-backend-sg.png)
+![Cấu hình inbound rule cho unified-backend-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/unified-backend-sg.png)
 
 ##### 2.3 Rules cho rds-sg
 - **Inbound Rules**:
   - Type: PostgreSQL | Port: `5432` | Source: chọn backend-sg
 
-![Cấu hình inbound rule cho rds-sg](/images/5-Workshop/5.4-Security-Groups/rds-sg.png)
+![Cấu hình inbound rule cho rds-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/rds-sg.png)
 
 ##### 2.4 Rules cho redis-sg
 - **Inbound Rules**:
   - Type: Custom TCP | Port: `6379` | Source: chọn backend-sg
 
-![Cấu hình inbound rule cho redis-sg](/images/5-Workshop/5.4-Security-Groups/redis-sg.png)
+![Cấu hình inbound rule cho redis-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/redis-sg.png)
 

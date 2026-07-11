@@ -20,7 +20,7 @@ Chúng ta sẽ tạo cụm Amazon ElastiCache (Redis OSS) để đồng bộ hó
    - **Subnets**: Tích chọn 2 private subnets tương ứng với dải IP 10.0.10.0/24 và 10.0.11.0/24.
 3. Nhấn **Create**.
 
-![Khởi tạo Redis Cache Subnet Group](/images/5-Workshop/5.7-ElastiCache-Redis/redis-subnet-group-create.png)
+![Khởi tạo Redis Cache Subnet Group](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-subnet-group-create.png)
 
 ---
 
@@ -40,7 +40,7 @@ Tại màn hình **Step 1: Settings**, thiết lập các mục sau:
 - **Creation method**: Tích chọn **Cluster cache** (Để hiển thị đầy đủ các tuỳ chọn cấu hình).
 - **Cluster mode**: Tích chọn **Disabled** (Chỉ chạy node đơn cho môi trường phát triển thử nghiệm).
 
-![Khởi tạo Redis - Cấu hình Settings Phần 1](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-settings-1.png)
+![Khởi tạo Redis - Cấu hình Settings Phần 1](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-settings-1.png)
 
 ##### 2. Cluster info
 - **Name**: Nhập `realtime-collab-dev-redis`
@@ -48,7 +48,7 @@ Tại màn hình **Step 1: Settings**, thiết lập các mục sau:
 - **Location**: Chọn **AWS Cloud**
 - **Multi-AZ**: **Tích chọn (Enabled)**.
 
-![Khởi tạo Redis - Cấu hình Settings Phần 2](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-settings-2.png)
+![Khởi tạo Redis - Cấu hình Settings Phần 2](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-settings-2.png)
 
 ##### 3. Cache settings
 - **Engine version**: Chọn **7.0** (hoặc phiên bản 7.x khả dụng).
@@ -57,14 +57,14 @@ Tại màn hình **Step 1: Settings**, thiết lập các mục sau:
 - **Node type**: Click chọn và chọn dòng **cache.t3.micro**.
 - **Number of replicas**: Nhập **`1`**.
 
-![Khởi tạo Redis - Cache settings](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-settings-3.png)
+![Khởi tạo Redis - Cache settings](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-settings-3.png)
 
 ##### 4. Connectivity (Kết nối mạng)
 - **Network type**: Chọn IPv4.
 - **Subnet groups**: Tích chọn **Choose existing subnet group** ➔ Chọn group `realtime-collab-dev-redis-subnet-group` đã tạo ở mục 1.
 - **Availability Zone placements**: Giữ nguyên No preference.
 
-![Khởi tạo Redis - Kết nối Connectivity](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-advanced-1.png)
+![Khởi tạo Redis - Kết nối Connectivity](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-advanced-1.png)
 
 Bấm **Next** để chuyển sang Bước 2.
 
@@ -80,17 +80,17 @@ Tại màn hình **Step 2: Advanced settings**, cấu hình phần bảo mật:
 - **Access control**: Chọn **Redis AUTH default user**.
 - **Auth token**: Nhập mã token xác thực (mật khẩu Redis) đã lưu trong Secrets Manager `redis-auth-token` ở Bước 1.
 
-![Khởi tạo Redis - Advanced Settings](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-advanced-2.png)
+![Khởi tạo Redis - Advanced Settings](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-advanced-2.png)
 
 - **Selected security groups**: Bấm nút **Manage** ➔ Tích chọn nhóm bảo mật **redis-sg** đã tạo ở Bước 4 (bỏ tích group default nếu có) ➔ Bấm **Save**.
 
-![Khởi tạo Redis - Advanced Settings](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-advanced-3.png)
+![Khởi tạo Redis - Advanced Settings](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-advanced-3.png)
 
 ##### 2. Backup & Maintenance
 - **Enable automatic backups**: Bỏ tích chọn.
 - **Auto minor version upgrade**: Tích chọn **Enable**.
 
-![Danh sách cụm Redis ở trạng thái khởi tạo](/images/5-Workshop/5.7-ElastiCache-Redis/redis-create-status.png)
+![Danh sách cụm Redis ở trạng thái khởi tạo](/images/5-Workshop/5.3-Data-Storage/5.3.3-ElastiCache-Redis/redis-create-status.png)
 
 Bấm **Next** để kiểm tra lại toàn bộ thông tin tại màn hình **Step 3: Review and create**.
 

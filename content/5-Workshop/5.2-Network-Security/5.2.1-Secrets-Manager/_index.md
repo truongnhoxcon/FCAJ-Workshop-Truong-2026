@@ -20,8 +20,8 @@ Navigate to **AWS Secrets Manager** and click **Store a new secret**. Set all of
 - **Secret name**: `realtime-collab-dev/db-password`
 - **Description**: RDS PostgreSQL master password
 
-![Select type and value for db-password](/images/5-Workshop/5.2-Secrets-Manager/db-password-1.png)
-![Configure name and description for db-password](/images/5-Workshop/5.2-Secrets-Manager/db-password-2.png)
+![Select type and value for db-password](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/db-password-1.png)
+![Configure name and description for db-password](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/db-password-2.png)
 
 ##### 2. `realtime-collab-dev/jwt-secret` (JWT Secret Token)
 - **Type**: Other type of secret ➔ tab `Key/value`
@@ -30,16 +30,16 @@ Navigate to **AWS Secrets Manager** and click **Store a new secret**. Set all of
   - Value: [A random string of at least 64 characters]
 - **Secret name**: `realtime-collab-dev/jwt-secret`
 
-![Select type and value for jwt-secret](/images/5-Workshop/5.2-Secrets-Manager/jwt-secret-1.png)
-![Configure name for jwt-secret](/images/5-Workshop/5.2-Secrets-Manager/jwt-secret-2.png)
+![Select type and value for jwt-secret](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/jwt-secret-1.png)
+![Configure name for jwt-secret](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/jwt-secret-2.png)
 
 ##### 3. `realtime-collab-dev/redis-auth-token` (Redis Authentication Token)
 - **Type**: Other type of secret ➔ tab `Plaintext`
 - **Value**: [A random 32-character string]
 - **Secret name**: `realtime-collab-dev/redis-auth-token`
 
-![Select type and value for redis-auth-token](/images/5-Workshop/5.2-Secrets-Manager/redis-token-1.png)
-![Configure name for redis-auth-token](/images/5-Workshop/5.2-Secrets-Manager/redis-token-2.png)
+![Select type and value for redis-auth-token](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/redis-token-1.png)
+![Configure name for redis-auth-token](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/redis-token-2.png)
 
 ##### 4. `realtime-collab-dev/twilio/api-credentials` (Twilio TURN Config)
 - **Type**: Other type of secret ➔ tab `Key/value`
@@ -50,8 +50,8 @@ Navigate to **AWS Secrets Manager** and click **Store a new secret**. Set all of
   - Key `apiKeySecret` ➔ Value: [Your Twilio API Key Secret]
 - **Secret name**: `realtime-collab-dev/twilio/api-credentials`
 
-![Select type and values for twilio credentials](/images/5-Workshop/5.2-Secrets-Manager/twilio-credentials-1.png)
-![Configure name for twilio credentials](/images/5-Workshop/5.2-Secrets-Manager/twilio-credentials-2.png)
+![Select type and values for twilio credentials](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/twilio-credentials-1.png)
+![Configure name for twilio credentials](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/twilio-credentials-2.png)
 
 ---
 

@@ -13,7 +13,7 @@ We will provision the serverless ECS Cluster on AWS Fargate, register our Task D
 #### Prerequisite: Create Unified Backend Log Group
 Go to **CloudWatch** ➔ **Log groups** ➔ **Create log group** named `/ecs/unified-backend` with **Retention**: `30 days`.
 
-![Create ECS Cluster](/images/5-Workshop/5.11-ECS-Fargate/ecs-cluster-create.png)
+![Create ECS Cluster](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-cluster-create.png)
 
 ---
 
@@ -24,11 +24,11 @@ Navigate to **Elastic Container Service (ECS)** ➔ **Clusters** ➔ click **Cre
 - **Cluster name**: `realtime-collab-dev`
 - **Infrastructure**: Check Fargate only
 
-![Create ECS Cluster - Part 1](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-json-1.png)
+![Create ECS Cluster - Part 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-json-1.png)
 
 - **Monitoring**: Check Container Insights
 
-![Create ECS Cluster - Part 2](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-json-2.png)
+![Create ECS Cluster - Part 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-json-2.png)
 
 ---
 
@@ -36,7 +36,7 @@ Navigate to **Elastic Container Service (ECS)** ➔ **Clusters** ➔ click **Cre
 
 Navigate to **ECS** ➔ **Task definitions** ➔ **Create new task definition** ➔ select **Create new revision with JSON**.
 
-![Create Task Definition](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-created.png)
+![Create Task Definition](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-created.png)
 
 ##### 2.1 Task Definition — Unified Backend (`realtime-collab-unified-backend`)
 
@@ -96,7 +96,7 @@ Paste the JSON below and replace the placeholders:
 }
 ```
 
-![ECS Service](/images/5-Workshop/5.11-ECS-Fargate/ecs-service-status.png)
+![ECS Service](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-service-status.png)
 
 ---
 
@@ -150,5 +150,5 @@ After a successful invocation, the CLI will output the newly created Service det
 2. In the **Services** tab, you should see the **unified-backend** service successfully created.
 3. Click on the Service name ➔ Select the **Tasks** tab to monitor docker image download and container provisioning. Once the tasks display status **Running** and the Health status shows **Healthy**, the system is fully operational!
 
-![ECS Service running healthy status](/images/5-Workshop/5.11-ECS-Fargate/tasks-status.png)
+![ECS Service running healthy status](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/tasks-status.png)
 

@@ -15,7 +15,7 @@ Navigate to the **VPC** service on the AWS Management Console, click **Create VP
 - **Name tag auto-generation**: `realtime-collab-dev`
 - **IPv4 CIDR block**: `10.0.0.0/16`
 - **Tenancy**: Default
-  ![VPC Wizard configuration part 1](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-1.png)
+  ![VPC Wizard configuration part 1](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-1.png)
 - **Number of Availability Zones (AZs)**: 2 (`us-east-1a`, `us-east-1b`)
 - **Number of Public Subnets**: 2
   - Public subnet 1 CIDR block: `10.0.1.0/24` (AZ 1)
@@ -24,7 +24,7 @@ Navigate to the **VPC** service on the AWS Management Console, click **Create VP
   - Private subnet 1 CIDR block: `10.0.10.0/24` (AZ 1)
   - Private subnet 2 CIDR block: `10.0.11.0/24` (AZ 2)
   
-![VPC Wizard configuration part 2](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-2.png)
+![VPC Wizard configuration part 2](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-2.png)
 
 - **NAT Gateways**: Regional
 - **VPC Endpoints**: Check S3 Gateway
@@ -32,7 +32,7 @@ Navigate to the **VPC** service on the AWS Management Console, click **Create VP
   - Enable DNS hostnames ➔ **Check**
   - Enable DNS resolution ➔ **Check**
 
-![VPC Wizard configuration part 3](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-3.png)
+![VPC Wizard configuration part 3](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-3.png)
 
 Click **Create VPC**. The Wizard will automatically create the Internet Gateway, Route Tables (Public & Private), NAT Gateway, and Elastic IP.
 
@@ -45,7 +45,7 @@ To record all IP traffic history within the VPC for monitoring and security audi
 1. Go to the details page of the newly created VPC.
 2. Select the **Flow logs** tab and click **Create flow log**.
 
-![Select Flow logs tab and click Create flow log](/images/5-Workshop/5.3-VPC-Network/flow-logs-1.png)
+![Select Flow logs tab and click Create flow log](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/flow-logs-1.png)
 
 3. Configure the following parameters:
    - **Filter**: All
@@ -54,6 +54,6 @@ To record all IP traffic history within the VPC for monitoring and security audi
    - **Destination log group**: Select or create a log group named `/aws/vpc/flow-logs/realtime-collab-dev`
    - **Service access**: Select **Create and use a new service role** so AWS automatically generates the IAM Role with log writing permissions.
 
-![VPC Flow logs configuration details](/images/5-Workshop/5.3-VPC-Network/flow-logs-2.png)
+![VPC Flow logs configuration details](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/flow-logs-2.png)
 
 4. Click **Create flow log**.

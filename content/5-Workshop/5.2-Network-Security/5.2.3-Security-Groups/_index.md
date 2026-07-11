@@ -31,7 +31,7 @@ For each security group, edit the **Inbound rules** and **Outbound rules** by se
 - **Outbound Rules**:
   - Type: All traffic | Destination: `0.0.0.0/0`
 
-![Configure inbound rule for alb-sg](/images/5-Workshop/5.4-Security-Groups/alb-sg.png)
+![Configure inbound rule for alb-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/alb-sg.png)
 
 ##### 2.2 Rules for unified-backend-sg
 - **Inbound Rules**:
@@ -39,17 +39,17 @@ For each security group, edit the **Inbound rules** and **Outbound rules** by se
 - **Outbound Rules**:
   - Type: All traffic | Destination: `0.0.0.0/0`
 
-![Configure inbound rule for unified-backend-sg](/images/5-Workshop/5.4-Security-Groups/unified-backend-sg.png)
+![Configure inbound rule for unified-backend-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/unified-backend-sg.png)
 
 ##### 2.3 Rules for rds-sg
 - **Inbound Rules**:
   - Type: PostgreSQL | Port: `5432` | Source: select backend-sg
 
-![Configure inbound rule for rds-sg](/images/5-Workshop/5.4-Security-Groups/rds-sg.png)
+![Configure inbound rule for rds-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/rds-sg.png)
 
 ##### 2.4 Rules for redis-sg
 - **Inbound Rules**:
   - Type: Custom TCP | Port: `6379` | Source: select backend-sg
 
-![Configure inbound rule for redis-sg](/images/5-Workshop/5.4-Security-Groups/redis-sg.png)
+![Configure inbound rule for redis-sg](/images/5-Workshop/5.2-Network-Security/5.2.3-Security-Groups/redis-sg.png)
 

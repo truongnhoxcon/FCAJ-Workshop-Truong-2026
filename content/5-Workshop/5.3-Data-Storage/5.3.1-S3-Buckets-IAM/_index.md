@@ -19,9 +19,9 @@ Navigate to **S3** ➔ **Create bucket**. Create the following 2 buckets in **us
 - **Bucket Versioning**: Disabled (No versioning needed).
 - **Encryption**: SSE-S3 (AES-256)
 
-![Create S3 Frontend - Name and Region](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-1.png)
-![Create S3 Frontend - Block Public Access and Versioning](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-2.png)
-![Create S3 Frontend - Encryption](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-3.png)
+![Create S3 Frontend - Name and Region](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
+![Create S3 Frontend - Block Public Access and Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-2.png)
+![Create S3 Frontend - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-3.png)
 
 - **Bucket Policy** (Permissions tab ➔ Bucket policy - allows CloudFront OAC to read objects):
   ```json
@@ -46,7 +46,7 @@ Navigate to **S3** ➔ **Create bucket**. Create the following 2 buckets in **us
   }
   ```
 
-![Configure Bucket Policy for Frontend](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-policy.png)
+![Configure Bucket Policy for Frontend](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-policy.png)
 
 #### 2. Application File Storage Bucket: `realtime-collab-files-<account-id>`
 - **Block public access**: Block all public access **➔ Enabled**
@@ -72,20 +72,20 @@ Additional configuration for the files bucket:
   }
   ```
 
-![Configure Bucket Policy for Files](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-policy.png)
+![Configure Bucket Policy for Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-policy.png)
 
 - **Lifecycle rules** (Management tab ➔ Create lifecycle rule):
-![Configure S3 Files CORS](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-cors.png)
+![Configure S3 Files CORS](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-cors.png)
 
   - **Rule 1**: Name `archive-workspace-files` | Prefix: `workspace-` | Action: Transition to Glacier storage after 90 days.
 
-  ![Configure Lifecycle Rule 1 for Files - Part 1](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
-  ![Configure Lifecycle Rule 1 for Files - Part 2](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
+  ![Configure Lifecycle Rule 1 for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
+  ![Configure Lifecycle Rule 1 for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
 
   - **Rule 2**: Name `abort-incomplete-multipart` | Prefix: Empty | Action: Abort incomplete multipart uploads after 7 days.
 
-![Configure Lifecycle Rule 2 for Files - Part 1](/images/5-Workshop/5.5-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
-![Configure Lifecycle Rule 2 for Files - Part 2](/images/5-Workshop/5.5-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
+![Configure Lifecycle Rule 2 for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
+![Configure Lifecycle Rule 2 for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
 
 - **Cross-origin resource sharing (CORS)** (Permissions tab ➔ CORS):
   ```json
@@ -97,8 +97,8 @@ Additional configuration for the files bucket:
   }]
   ```
 
-  ![Configure CORS for Files - Part 1](/images/5-Workshop/5.5-S3-Buckets-IAM/file-CORS-1.png)
-  ![Configure CORS for Files - Part 2](/images/5-Workshop/5.5-S3-Buckets-IAM/file-CORS-2.png)
+  ![Configure CORS for Files - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/file-CORS-1.png)
+  ![Configure CORS for Files - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/file-CORS-2.png)
 
 ---
 
@@ -122,7 +122,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
    - **Use case**: Select **Elastic Container Service Task** (Ensures ECS Tasks can assume this role).
    - Click **Next**.
 
-   ![Create ECS Task Execution Role - Part 1](/images/5-Workshop/5.5-S3-Buckets-IAM/create-role-1.png)
+   ![Create ECS Task Execution Role - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/create-role-1.png)
    
 4. In the **Add permissions** screen:
    - Do not select any managed policies (we will add custom Inline Policies to adhere to the principle of least privilege).
@@ -132,12 +132,12 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
    - **Description**: Enter `ECS Task Execution Role for realtime-collab project`.
    - Click **Create role** at the bottom of the page.
 
-![Create ECS Task Execution Role - Part 2](/images/5-Workshop/5.5-S3-Buckets-IAM/create-role-2.png)
+![Create ECS Task Execution Role - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/create-role-2.png)
 
 6. Once created, search for `ecsTaskExecutionRole-realtime-collab-dev` in the Roles list and click on it.
 7. Add the following **3 Inline Policies** by clicking the **Add permissions** dropdown ➔ Select **Create inline policy**:
 
-![Create Inline Policy](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-role-create.png)
+![Create Inline Policy](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-role-create.png)
 
 ##### ➕ Inline Policy 1: ECR Docker Image Pull permission (`ecr-pull`)
 * Select the **JSON** editor tab and paste the following policy:
@@ -164,11 +164,11 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
   ]
 }
 ```
-![Configure Inline Policy ecr-pull](/images/5-Workshop/5.5-S3-Buckets-IAM/ecr-pull-policy.png)
+![Configure Inline Policy ecr-pull](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/ecr-pull-policy.png)
 
 * Click **Next**, name the policy `ecr-pull`, and click **Create policy**.
 
-![Create Inline Policy ecr-pull](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-policy-ecr.png)
+![Create Inline Policy ecr-pull](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-policy-ecr.png)
 
 ##### ➕ Inline Policy 2: CloudWatch Log Streams permission (`cloudwatch-logs-ecs`)
 * Click **Add permissions** ➔ **Create inline policy**, choose the **JSON** tab and paste:
@@ -183,7 +183,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
   }]
 }
 ```
-![Configure Inline Policy cloudwatch-logs-ecs](/images/5-Workshop/5.5-S3-Buckets-IAM/cloudwatch-logs-ecs.png)
+![Configure Inline Policy cloudwatch-logs-ecs](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/cloudwatch-logs-ecs.png)
 
 * Click **Next**, name the policy `cloudwatch-logs-ecs`, and click **Create policy**.
 
@@ -205,7 +205,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
   }]
 }
 ```
-![Create Inline Policy secrets-execution](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-policy-secrets.png)
+![Create Inline Policy secrets-execution](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-policy-secrets.png)
 
 * Click **Next**, name the policy `secrets-execution`, and click **Create policy**.
 
@@ -219,7 +219,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
    - **Service or use case**: Choose **Elastic Container Service** ➔ **Elastic Container Service Task**.
    - Click **Next**.
 
-   ![Create ECS Task Role - Part 1](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-task-role-create.png)
+   ![Create ECS Task Role - Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-task-role-create.png)
 
 3. In the **Add permissions** screen: Click **Next** without selecting any policies.
 4. In the **Name, review, and create** screen:
@@ -227,7 +227,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
    - **Description**: Enter `ECS Task Role for realtime-collab project runtime`.
    - Click **Create role**.
 
-![Create ECS Task Role - Part 2](/images/5-Workshop/5.5-S3-Buckets-IAM/ecsTaskRole-realtime-collab-dev.png)
+![Create ECS Task Role - Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/ecsTaskRole-realtime-collab-dev.png)
 
 5. Find and click on your newly created `ecsTaskRole-realtime-collab-dev` role.
 6. Attach the following **2 Inline Policies** using **Add permissions** ➔ **Create inline policy**:
@@ -253,7 +253,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
   ]
 }
 ```
-![Create Inline Policy s3-file-storage](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-task-policy-s3.png)
+![Create Inline Policy s3-file-storage](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-task-policy-s3.png)
 
 * Click **Next**, name the policy `s3-file-storage`, and click **Create policy**.
 
@@ -272,7 +272,7 @@ Here are the step-by-step instructions to configure these roles via the AWS Cons
   }]
 }
 ```
-![Configure Inline Policy secrets-task](/images/5-Workshop/5.5-S3-Buckets-IAM/secrets-task.png)
+![Configure Inline Policy secrets-task](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/secrets-task.png)
 
 * Click **Next**, name the policy `secrets-task`, and click **Create policy**.
 

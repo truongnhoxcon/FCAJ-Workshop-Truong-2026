@@ -23,7 +23,7 @@ Trước khi tạo cơ sở dữ liệu, chúng ta cần khai báo nhóm subnet 
    - **Subnets**: Tích chọn 2 private subnets tương ứng với dải IP 10.0.10.0/24 và 10.0.11.0/24.
 3. Nhấn **Create**.
 
-![Khởi tạo DB Subnet Group](/images/5-Workshop/5.6-RDS-Database/db-subnet-group-create.png)
+![Khởi tạo DB Subnet Group](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-subnet-group-create.png)
 
 ---
 
@@ -37,14 +37,14 @@ Trước khi tạo cơ sở dữ liệu, chúng ta cần khai báo nhóm subnet 
    - **Description**: `PostgreSQL 15 enforce SSL`
 3. Nhấn **Create**.
 
-![Khởi tạo Parameter Group](/images/5-Workshop/5.6-RDS-Database/db-subnet-group-details.png)
+![Khởi tạo Parameter Group](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-subnet-group-details.png)
 
 
 4. Chọn Parameter Group vừa tạo ➔ bấm **Edit** ➔ Tìm kiếm tham số `rds.force_ssl` và chuyển giá trị thành `1` (Apply method: `immediate`). Nhấn **Save changes**.
 
-![Eidt Parameter Group](/images/5-Workshop/5.6-RDS-Database/db-parameter-group-create.png)
+![Eidt Parameter Group](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-parameter-group-create.png)
 
-![Bắt buộc sử dụng mã hoá SSL](/images/5-Workshop/5.6-RDS-Database/db-parameter-group-edit.png)
+![Bắt buộc sử dụng mã hoá SSL](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-parameter-group-edit.png)
 
 ---
 
@@ -56,11 +56,11 @@ Chọn **RDS** ➔ **Databases** ➔ **Create database**. Sử dụng cấu hìn
 - **Engine options**: PostgreSQL
 - **Templates**: Dev/Test
 
-![Khởi tạo Database - Engine Options](/images/5-Workshop/5.6-RDS-Database/db-create-engine.png)
+![Khởi tạo Database - Engine Options](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-engine.png)
 
 - **Availability and durability**: **Multi-AZ DB instance**
 
-![Khởi tạo Database - Settings & Credentials](/images/5-Workshop/5.6-RDS-Database/2az.png)
+![Khởi tạo Database - Settings & Credentials](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/2az.png)
 
 
 - **Settings**:
@@ -68,14 +68,14 @@ Chọn **RDS** ➔ **Databases** ➔ **Create database**. Sử dụng cấu hìn
   - **Master username**: `postgres`
   - **Master password**: Nhập đúng mật khẩu đã lưu trong Secrets Manager `db-password` ở Bước 1.
 
-![Khởi tạo Database - Master Password](/images/5-Workshop/5.6-RDS-Database/db-create-settings-2.png)
+![Khởi tạo Database - Master Password](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-settings-2.png)
 - **Instance configuration**: db.t3.medium
 - **Storage**:
   - Storage type: `gp3` | Allocated storage: `100 GB`
   - **Enable storage autoscaling**: **Tích chọn** | Maximum storage threshold: `500 GB`
 
-![Khởi tạo Database - Instance Type](/images/5-Workshop/5.6-RDS-Database/db-create-instance.png)
-![Khởi tạo Database - Storage Autoscaling](/images/5-Workshop/5.6-RDS-Database/db-create-storage.png)
+![Khởi tạo Database - Instance Type](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-instance.png)
+![Khởi tạo Database - Storage Autoscaling](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-storage.png)
 - **Connectivity**:
   - **VPC**: realtime-collab-dev
   - **DB Subnet group**: realtime-collab-dev-db-subnet-group
@@ -83,18 +83,18 @@ Chọn **RDS** ➔ **Databases** ➔ **Create database**. Sử dụng cấu hìn
   - **VPC security group (existing)**: Chọn rds-sg (Xóa bỏ group default nếu có).
 - **Database authentication**: Password authentication
 
-![Khởi tạo Database - Connectivity Part 1](/images/5-Workshop/5.6-RDS-Database/db-create-network-1.png)
-![Khởi tạo Database - Connectivity Part 2](/images/5-Workshop/5.6-RDS-Database/db-create-network-2.png)
+![Khởi tạo Database - Connectivity Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-network-1.png)
+![Khởi tạo Database - Connectivity Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-network-2.png)
 - **Additional configuration**:
   - **Initial database name**: `realtime_collab`
   - **DB parameter group**: Chọn `realtime-collab-dev-pg15-ssl`
-![Khởi tạo Database - Additional Configuration Part 1](/images/5-Workshop/5.6-RDS-Database/db-create-additional-1.png)
+![Khởi tạo Database - Additional Configuration Part 1](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-1.png)
   - **Backup**:
     - Backup retention period: 7 days
     - Backup window: Chọn 03:00 - 04:00 UTC
     - **Copy tags to snapshots**: **Tích chọn**
 
-![Khởi tạo Database - Additional Configuration Part 2](/images/5-Workshop/5.6-RDS-Database/db-create-additional-2.png)
+![Khởi tạo Database - Additional Configuration Part 2](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-2.png)
   - **Encryption**: **Tích chọn** Enable encryption
   - **Monitoring**:
     - **Enable Enhanced Monitoring**: **Tích chọn** (Granularity: 60 seconds, tạo Monitoring role mới).
@@ -103,6 +103,6 @@ Chọn **RDS** ➔ **Databases** ➔ **Create database**. Sử dụng cấu hìn
   - **Maintenance**: **Tích chọn** Auto minor version upgrade
   - **Deletion protection**: Không tích chọn (để dễ dàng xóa khi dọn dẹp).
 
-![Khởi tạo Database - Additional Configuration Part 3](/images/5-Workshop/5.6-RDS-Database/db-create-additional-3.png)
+![Khởi tạo Database - Additional Configuration Part 3](/images/5-Workshop/5.3-Data-Storage/5.3.2-RDS-Database/db-create-additional-3.png)
 
 Nhấn **Create database**. Quá trình khởi tạo sẽ mất khoảng **10 - 15 phút**. Sau khi Database hiển thị trạng thái Available, hãy sao chép lại **Endpoint** của database để sử dụng làm biến môi trường DB_HOST ở các bước sau.

@@ -20,8 +20,8 @@ Truy cập dịch vụ **AWS Secrets Manager** và chọn **Store a new secret**
 - **Secret name**: `realtime-collab-dev/db-password`
 - **Description**: RDS PostgreSQL master password
 
-![Chọn kiểu và nhập mật khẩu db-password](/images/5-Workshop/5.2-Secrets-Manager/db-password-1.png)
-![Cấu hình tên và mô tả db-password](/images/5-Workshop/5.2-Secrets-Manager/db-password-2.png)
+![Chọn kiểu và nhập mật khẩu db-password](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/db-password-1.png)
+![Cấu hình tên và mô tả db-password](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/db-password-2.png)
 
 ##### 2. `realtime-collab-dev/jwt-secret` (Khóa bảo mật JWT)
 - **Type**: Other type of secret ➔ tab `Key/value`
@@ -30,16 +30,16 @@ Truy cập dịch vụ **AWS Secrets Manager** và chọn **Store a new secret**
   - Value: [Chuỗi ngẫu nhiên dài ít nhất 64 ký tự]
 - **Secret name**: `realtime-collab-dev/jwt-secret`
 
-![Chọn kiểu và nhập khóa jwt-secret](/images/5-Workshop/5.2-Secrets-Manager/jwt-secret-1.png)
-![Cấu hình tên jwt-secret](/images/5-Workshop/5.2-Secrets-Manager/jwt-secret-2.png)
+![Chọn kiểu và nhập khóa jwt-secret](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/jwt-secret-1.png)
+![Cấu hình tên jwt-secret](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/jwt-secret-2.png)
 
 ##### 3. `realtime-collab-dev/redis-auth-token` (Mã xác thực Redis)
 - **Type**: Other type of secret ➔ tab `Plaintext`
 - **Value**: [Chuỗi ngẫu nhiên 32 ký tự]
 - **Secret name**: `realtime-collab-dev/redis-auth-token`
 
-![Chọn kiểu và nhập token redis-auth-token](/images/5-Workshop/5.2-Secrets-Manager/redis-token-1.png)
-![Cấu hình tên redis-auth-token](/images/5-Workshop/5.2-Secrets-Manager/redis-token-2.png)
+![Chọn kiểu và nhập token redis-auth-token](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/redis-token-1.png)
+![Cấu hình tên redis-auth-token](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/redis-token-2.png)
 
 ##### 4. `realtime-collab-dev/twilio/api-credentials` (Cấu hình Twilio TURN)
 - **Type**: Other type of secret ➔ tab `Key/value`
@@ -50,8 +50,8 @@ Truy cập dịch vụ **AWS Secrets Manager** và chọn **Store a new secret**
   - Key `apiKeySecret` ➔ Value: [Twilio API Key Secret]
 - **Secret name**: `realtime-collab-dev/twilio/api-credentials`
 
-![Chọn kiểu và nhập thông tin twilio](/images/5-Workshop/5.2-Secrets-Manager/twilio-credentials-1.png)
-![Cấu hình tên twilio](/images/5-Workshop/5.2-Secrets-Manager/twilio-credentials-2.png)
+![Chọn kiểu và nhập thông tin twilio](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/twilio-credentials-1.png)
+![Cấu hình tên twilio](/images/5-Workshop/5.2-Network-Security/5.2.1-Secrets-Manager/twilio-credentials-2.png)
 
 ---
 

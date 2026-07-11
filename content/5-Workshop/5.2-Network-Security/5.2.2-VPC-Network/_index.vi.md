@@ -15,7 +15,7 @@ Truy cập dịch vụ **VPC** trên AWS Management Console, chọn **Create VPC
 - **Name tag auto-generation**: `realtime-collab-dev`
 - **IPv4 CIDR block**: `10.0.0.0/16`
 - **Tenancy**: Default
-  ![Cấu hình VPC Wizard phần 1](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-1.png)
+  ![Cấu hình VPC Wizard phần 1](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-1.png)
 - **Number of Availability Zones (AZs)**: 2 (`us-east-1a`, `us-east-1b`)
 - **Number of Public Subnets**: 2
   - Public subnet 1 CIDR block: `10.0.1.0/24` (AZ 1)
@@ -24,7 +24,7 @@ Truy cập dịch vụ **VPC** trên AWS Management Console, chọn **Create VPC
   - Private subnet 1 CIDR block: `10.0.10.0/24` (AZ 1)
   - Private subnet 2 CIDR block: `10.0.11.0/24` (AZ 2)
   
-![Cấu hình VPC Wizard phần 2](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-2.png)
+![Cấu hình VPC Wizard phần 2](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-2.png)
 
 - **NAT Gateways**: Regional
 - **VPC Endpoints**: Chọn S3 Gateway
@@ -32,7 +32,7 @@ Truy cập dịch vụ **VPC** trên AWS Management Console, chọn **Create VPC
   - Enable DNS hostnames ➔ **Tích chọn**
   - Enable DNS resolution ➔ **Tích chọn**
 
-![Cấu hình VPC Wizard phần 3](/images/5-Workshop/5.3-VPC-Network/vpc-wizard-3.png)
+![Cấu hình VPC Wizard phần 3](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/vpc-wizard-3.png)
 
 Sau đó, nhấn **Create VPC**. Wizard sẽ tự động tạo Internet Gateway, Route Tables (Public & Private), NAT Gateway, và Elastic IP tương ứng.
 
@@ -45,7 +45,7 @@ Nhằm ghi lại toàn bộ lịch sử lưu lượng truy cập IP trong VPC đ
 1. Truy cập trang chi tiết VPC vừa tạo.
 2. Chọn tab **Flow logs** và nhấn **Create flow log**.
 
-![Chọn tab Flow logs và bấm Create flow log](/images/5-Workshop/5.3-VPC-Network/flow-logs-1.png)
+![Chọn tab Flow logs và bấm Create flow log](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/flow-logs-1.png)
 
 3. Cấu hình các thông số:
    - **Filter**: All
@@ -54,7 +54,7 @@ Nhằm ghi lại toàn bộ lịch sử lưu lượng truy cập IP trong VPC đ
    - **Destination log group**: Chọn hoặc tạo mới Log Group tên `/aws/vpc/flow-logs/realtime-collab-dev`
    - **Service access**: Chọn **Create and use a new service role** để AWS tự động tạo IAM Role cấp quyền ghi logs cho VPC.
 
-![Cấu hình chi tiết VPC Flow logs](/images/5-Workshop/5.3-VPC-Network/flow-logs-2.png)
+![Cấu hình chi tiết VPC Flow logs](/images/5-Workshop/5.2-Network-Security/5.2.2-VPC-Network/flow-logs-2.png)
 
 4. Nhấn **Create flow log**.
 

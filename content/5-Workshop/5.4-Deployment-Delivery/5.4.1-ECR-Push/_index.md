@@ -17,11 +17,11 @@ Navigate to the **Elastic Container Registry (ECR)** service ➔ **Repositories*
 - **Repository name**: `unified-backend`
 - **Tag mutability**: Mutable
 
-![Create ECR Repository Part 1](/images/5-Workshop/5.8-ECR-Push/ecr-create-1.png)
+![Create ECR Repository Part 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-create-1.png)
 
 - **Scan on push**: **Enable**
 
-![Create ECR Repository Part 2](/images/5-Workshop/5.8-ECR-Push/ecr-create-2.png)
+![Create ECR Repository Part 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-create-2.png)
 
 ---
 
@@ -29,7 +29,7 @@ Navigate to the **Elastic Container Registry (ECR)** service ➔ **Repositories*
 
 To automatically clean up old images and optimize storage costs, select the repository ➔ click **Lifecycle policy** in the left sidebar ➔ **Create rule**. Set up the following 2 rules:
 
-![Configure Lifecycle Rule 1](/images/5-Workshop/5.8-ECR-Push/ecr-created.png)
+![Configure Lifecycle Rule 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-created.png)
 
 ##### Rule 1: Expire untagged images after 1 day
 - **Rule priority**: `1`
@@ -37,7 +37,7 @@ To automatically clean up old images and optimize storage costs, select the repo
 - **Image status**: Untagged
 - **Match criteria**: Days since image created ➔ Days before action: 1
 
-![Configure Lifecycle Rule 1](/images/5-Workshop/5.8-ECR-Push/ecr-lifecycle-1.png)
+![Configure Lifecycle Rule 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-1.png)
 
 ##### Rule 2: Keep only 30 most recent tagged images
 - **Rule priority**: `2`
@@ -46,8 +46,8 @@ To automatically clean up old images and optimize storage costs, select the repo
 - **Match criteria**: Image count ➔ Count number: 30
 - **Action**: Expire
 
-![Configure Lifecycle Rule 2 - Part 1](/images/5-Workshop/5.8-ECR-Push/ecr-lifecycle-2.png)
-![Configure Lifecycle Rule 2 - Part 2](/images/5-Workshop/5.8-ECR-Push/ecr-lifecycle-3.png)
+![Configure Lifecycle Rule 2 - Part 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-2.png)
+![Configure Lifecycle Rule 2 - Part 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-lifecycle-3.png)
 
 ---
 
@@ -66,6 +66,6 @@ This script will automatically:
 
 Once completed, you will see:
 
-![ECR Repository Docker Image List](/images/5-Workshop/5.8-ECR-Push/ecr-deploy-terminal.png)
+![ECR Repository Docker Image List](/images/5-Workshop/5.4-Deployment-Delivery/5.4.1-ECR-Push/ecr-deploy-terminal.png)
 Copy this URI for the ECS Task Definitions configuration step.
 

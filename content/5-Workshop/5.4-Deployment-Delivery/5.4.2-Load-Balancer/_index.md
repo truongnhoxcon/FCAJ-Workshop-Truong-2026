@@ -21,7 +21,7 @@ Navigate to **EC2** ➔ **Target Groups** (under the Load Balancing menu) ➔ **
 - **Target group name**: `realtime-collab-dev-uni-api-tg`
 - **Protocol**: HTTP | **Port**: `3000`
 
-![Create Target Group API - Configure Port](/images/5-Workshop/5.9-Load-Balancer/tg-api-1.png)
+![Create Target Group API - Configure Port](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-api-1.png)
 
 - **VPC**: Select realtime-collab-dev
 - **Health checks**:
@@ -30,8 +30,8 @@ Navigate to **EC2** ➔ **Target Groups** (under the Load Balancing menu) ➔ **
 - **Deregistration delay**: `30 seconds`
 - **Stickiness**: Disabled.
 
-![Create Target Group API - Health Check Path](/images/5-Workshop/5.9-Load-Balancer/tg-api-2.png)
-![Create Target Group API - Health Check Advanced](/images/5-Workshop/5.9-Load-Balancer/tg-api-3.png)
+![Create Target Group API - Health Check Path](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-api-2.png)
+![Create Target Group API - Health Check Advanced](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-api-3.png)
 
 
 ##### Target Group 2: `realtime-collab-dev-uni-ws-tg` (For Unified Backend WebSocket)
@@ -39,17 +39,17 @@ Navigate to **EC2** ➔ **Target Groups** (under the Load Balancing menu) ➔ **
 - **Target group name**: `realtime-collab-dev-uni-ws-tg`
 - **Protocol**: HTTP | **Port**: `3000`
 
-![Create Target Group WS - Configure Port](/images/5-Workshop/5.9-Load-Balancer/tg-ws-1.png)
+![Create Target Group WS - Configure Port](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-ws-1.png)
 
 - **VPC**: Select realtime-collab-dev
-![Create Target Group WS - Health Check Path](/images/5-Workshop/5.9-Load-Balancer/tg-ws-2.png)
+![Create Target Group WS - Health Check Path](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-ws-2.png)
 
 - **Health checks**:
   - Health check path: `/health`
   - Advanced settings: Interval: `15s` | Timeout: `5s` | Healthy: `2` | Unhealthy: `2` | Success: `200`
 
-![Create Target Group WS - Health Check Advanced](/images/5-Workshop/5.9-Load-Balancer/tg-ws-3.png)
-![Create Target Group WS - Stickiness Enable](/images/5-Workshop/5.9-Load-Balancer/tg-ws-4.png)
+![Create Target Group WS - Health Check Advanced](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-ws-3.png)
+![Create Target Group WS - Stickiness Enable](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/tg-ws-4.png)
 
 
 ---
@@ -63,7 +63,7 @@ Navigate to **EC2** ➔ **Load Balancers** ➔ **Create Load Balancer** ➔ sele
   - **Scheme**: Internet-facing
   - **IP address type**: IPv4
 
-![Create ALB - Name and Scheme](/images/5-Workshop/5.9-Load-Balancer/alb-create-1.png)
+![Create ALB - Name and Scheme](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-create-1.png)
 
 - **Network mapping**:
   - **VPC**: Select realtime-collab-dev
@@ -71,15 +71,15 @@ Navigate to **EC2** ➔ **Load Balancers** ➔ **Create Load Balancer** ➔ sele
     - AZ 1 (us-east-1a) ➔ Subnet: public-subnet-1 (10.0.1.0/24)
     - AZ 2 (us-east-1b) ➔ Subnet: public-subnet-2 (10.0.2.0/24)
 
-![Create ALB - Network Mappings Subnets](/images/5-Workshop/5.9-Load-Balancer/alb-create-2.png)
+![Create ALB - Network Mappings Subnets](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-create-2.png)
 
 - **Security groups**: Select alb-sg (Remove the default security group).
 - **Listeners and routing**:
   - **Protocol**: HTTP | **Port**: `80`
   - **Default action**: Select **Return fixed response** | Response code: `404` | Content-type: text/plain | Response body: `Not Found` (Since the frontend will be served directly from CloudFront + S3, the ALB is only responsible for dynamic API/WS routing).
 
-![Create ALB - Security Groups](/images/5-Workshop/5.9-Load-Balancer/alb-create-3.png)
-![Create ALB - Listeners default action 404](/images/5-Workshop/5.9-Load-Balancer/alb-create-4.png)
+![Create ALB - Security Groups](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-create-3.png)
+![Create ALB - Listeners default action 404](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-create-4.png)
 
 Click **Create load balancer**.
 
@@ -95,8 +95,8 @@ Since the new AWS Console UI has removed **Attributes** configuration from the i
 4. Locate the **Idle timeout** setting (under **Connection settings**) and change its value from **60** to **3600** seconds (Required to keep WebSocket connections alive).
 5. Click **Save changes**.
 
-![Configure Idle Timeout for ALB - Attributes tab](/images/5-Workshop/5.9-Load-Balancer/alb-idle-1.png)
-![Configure Idle Timeout for ALB - Change to 3600](/images/5-Workshop/5.9-Load-Balancer/alb-idle-2.png)
+![Configure Idle Timeout for ALB - Attributes tab](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-idle-1.png)
+![Configure Idle Timeout for ALB - Change to 3600](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-idle-2.png)
 
 6. Copy the **DNS name** of the ALB (e.g., `realtime-collab-dev-alb-XXXXXXXX.us-east-1.elb.amazonaws.com`) for the upcoming configuration steps.
 
@@ -109,16 +109,16 @@ We need to segregate traffic: requests entering `/api/*` go to the Unified API T
 1. Open the details page of the newly created Load Balancer ➔ Select **Listeners and rules** tab.
 2. Click the listener **HTTP:80** to manage rules ➔ Click **Add rule**.
 
-![Add Listener Rules for HTTP:80](/images/5-Workshop/5.9-Load-Balancer/alb-rules-1.png)
+![Add Listener Rules for HTTP:80](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-1.png)
 
 3. **Add Rule 1 — REST API**:
    - **Priority**: `1`
    - **Condition**: Select Path ➔ Enter `/api/*`
    - **Action**: Select Forward to ➔ Target Group: realtime-collab-dev-uni-api-tg
 
-   ![Route Rule 1 REST API /api/*](/images/5-Workshop/5.9-Load-Balancer/alb-rules-2.png)
-   ![Route Rule 1 REST API Forward](/images/5-Workshop/5.9-Load-Balancer/alb-rules-3.png)
-   ![Route Rule 1 REST API Forward](/images/5-Workshop/5.9-Load-Balancer/rule-1.png)
+   ![Route Rule 1 REST API /api/*](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-2.png)
+   ![Route Rule 1 REST API Forward](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-3.png)
+   ![Route Rule 1 REST API Forward](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/rule-1.png)
 
 4. **Add Rule 2 — WebSocket**:
    - **Priority**: `2`
@@ -126,7 +126,7 @@ We need to segregate traffic: requests entering `/api/*` go to the Unified API T
    - **Action**: Select Forward to ➔ Target Group: realtime-collab-dev-uni-ws-tg
 5. Click **Save** to apply.
 
-![Route Rule 2 WebSocket /ws/*](/images/5-Workshop/5.9-Load-Balancer/alb-rules-4.png)
-![Route Rule 2 WebSocket Forward](/images/5-Workshop/5.9-Load-Balancer/alb-rules-5.png)
-![Listener Rules List configured successfully](/images/5-Workshop/5.9-Load-Balancer/alb-rules-6.png)
+![Route Rule 2 WebSocket /ws/*](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-4.png)
+![Route Rule 2 WebSocket Forward](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-5.png)
+![Listener Rules List configured successfully](/images/5-Workshop/5.4-Deployment-Delivery/5.4.2-Load-Balancer/alb-rules-6.png)
 

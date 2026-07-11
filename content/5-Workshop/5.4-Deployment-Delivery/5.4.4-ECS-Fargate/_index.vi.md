@@ -13,7 +13,7 @@ Chúng ta sẽ thiết lập cụm máy chủ Amazon ECS Fargate chạy các con
 #### Trước hết: Tạo Log Group cho Unified Backend
 Vào **CloudWatch** ➔ **Log groups** ➔ **Create log group** tên `/ecs/unified-backend` với **Retention**: `30 days`.
 
-![Khởi tạo ECS Cluster](/images/5-Workshop/5.11-ECS-Fargate/ecs-cluster-create.png)
+![Khởi tạo ECS Cluster](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-cluster-create.png)
 
 ---
 
@@ -24,11 +24,11 @@ Truy cập dịch vụ **Elastic Container Service (ECS)** ➔ **Clusters** ➔ 
 - **Cluster name**: `realtime-collab-dev`
 - **Infrastructure**: **Tích chọn** Fargate only
 
-![Khởi tạo ECS Cluster Phần 1](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-json-1.png)
+![Khởi tạo ECS Cluster Phần 1](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-json-1.png)
 
 - **Monitoring**: **Tích chọn** Container Insights
 
-![Khởi tạo ECS Cluster Phần 2](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-json-2.png)
+![Khởi tạo ECS Cluster Phần 2](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-json-2.png)
 
 
 ---
@@ -39,7 +39,7 @@ Chúng ta sẽ tạo mô tả tác vụ bằng cách dán mã nguồn JSON trự
 
 Truy cập **ECS** ➔ **Task definitions** ➔ **Create new task definition** ➔ chọn **Create new revision with JSON**.
 
-![Khởi tạo Task Definition](/images/5-Workshop/5.11-ECS-Fargate/ecs-task-created.png)
+![Khởi tạo Task Definition](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-task-created.png)
 
 ##### 2.1 Task Definition — Unified Backend (`realtime-collab-unified-backend`)
 
@@ -99,7 +99,7 @@ Dán JSON dưới đây và thay thế các giá trị:
 }
 ```
 
-![ECS Service](/images/5-Workshop/5.11-ECS-Fargate/ecs-service-status.png)
+![ECS Service](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/ecs-service-status.png)
 
 ---
 
@@ -153,7 +153,7 @@ Sau khi chạy lệnh thành công, AWS sẽ trả về thông tin cấu hình S
 2. Tại tab **Services**, bạn sẽ thấy Service **unified-backend** đã được tạo.
 3. Nhấp chọn vào tên Service ➔ Chọn tab **Tasks** để giám sát quá trình tải docker image và khởi chạy các containers. Khi các tasks hiển thị trạng thái **Running** và Health status là **Healthy**, hệ thống đã chính thức hoạt động!
 
-![ECS Service trạng thái hoạt động Healthy](/images/5-Workshop/5.11-ECS-Fargate/tasks-status.png)
+![ECS Service trạng thái hoạt động Healthy](/images/5-Workshop/5.4-Deployment-Delivery/5.4.4-ECS-Fargate/tasks-status.png)
 
 
 

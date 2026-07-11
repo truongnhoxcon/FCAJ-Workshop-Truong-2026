@@ -19,9 +19,9 @@ Truy cập dịch vụ **S3** ➔ **Create bucket**. Tạo lần lượt 2 bucke
 - **Bucket Versioning**: Disabled (Không cần versioning).
 - **Encryption**: SSE-S3 (AES-256)
 
-![Khởi tạo S3 Frontend - Tên và Vùng](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-1.png)
-![Khởi tạo S3 Frontend - Block Public Access và Versioning](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-2.png)
-![Khởi tạo S3 Frontend - Encryption](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-3.png)
+![Khởi tạo S3 Frontend - Tên và Vùng](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-1.png)
+![Khởi tạo S3 Frontend - Block Public Access và Versioning](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-2.png)
+![Khởi tạo S3 Frontend - Encryption](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-3.png)
 
 - **Bucket Policy** (Tab Permissions ➔ Bucket policy - Chính sách này sẽ cho phép CloudFront OAC được đọc file từ S3):
   ```json
@@ -46,7 +46,7 @@ Truy cập dịch vụ **S3** ➔ **Create bucket**. Tạo lần lượt 2 bucke
   }
   ```
 
-![Cấu hình Bucket Policy cho Frontend](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-frontend-policy.png)
+![Cấu hình Bucket Policy cho Frontend](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-frontend-policy.png)
 
 #### 2. Bucket lưu trữ tệp tin người dùng: `realtime-collab-files-<account-id>`
 - **Block public access**: Block all public access **➔ Tích chọn**
@@ -72,22 +72,22 @@ Cấu hình bổ sung cho bucket lưu trữ tệp tin:
   }
   ```
 
-![Cấu hình Bucket Policy cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-policy.png)
+![Cấu hình Bucket Policy cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-policy.png)
 
 - **Lifecycle rules** (Tab Management ➔ Create lifecycle rule):
-![Cấu hình Bucket Policy cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-cors.png)
+![Cấu hình Bucket Policy cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-cors.png)
 
   - **Rule 1**: Tên `archive-workspace-files` | Prefix: `workspace-` | Action: Chuyển sang lưu trữ Glacier sau 90 ngày.
 
-  ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
+  ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.1.png)
 
-  ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
+  ![Cấu hình Lifecycle Rules 1 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/s3-files-lifecycle-rule-1.2.png)
 
   - **Rule 2**: Tên `abort-incomplete-multipart` | Prefix: Để trống | Action: Hủy các tệp tải lên dở dang sau 7 ngày.
 
-![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
+![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-1.png)
 
-![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
+![Cấu hình Lifecycle Rules 2 cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/abort-incomplete-multipart-2.png)
 
 - **Cross-origin resource sharing (CORS)** (Tab Permissions ➔ CORS):
   ```json
@@ -99,9 +99,9 @@ Cấu hình bổ sung cho bucket lưu trữ tệp tin:
   }]
   ```
 
-  ![Cấu hình CORS cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/file-CORS-1.png)
+  ![Cấu hình CORS cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/file-CORS-1.png)
 
-  ![Cấu hình CORS cho Files](/images/5-Workshop/5.5-S3-Buckets-IAM/file-CORS-2.png)
+  ![Cấu hình CORS cho Files](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/file-CORS-2.png)
 
 ---
 
@@ -124,7 +124,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
    - **Service or use case**: Chọn **Elastic Container Service** ở danh sách thả xuống.
    - **Use case**: Tích chọn **Elastic Container Service Task** (Lưu ý chọn đúng dòng này để cho phép ECS Task đảm nhận vai trò).
 
-   ![Khởi tạo ECS Task Execution Role](/images/5-Workshop/5.5-S3-Buckets-IAM/create-role-1.png)
+   ![Khởi tạo ECS Task Execution Role](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/create-role-1.png)
 
    - Bấm **Next**.
 4. Ở màn hình **Add permissions**:
@@ -135,12 +135,12 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
    - **Description**: Nhập `ECS Task Execution Role for realtime-collab project`.
    - Bấm **Create role** ở cuối trang.
 
-![Khởi tạo ECS Task Execution Role](/images/5-Workshop/5.5-S3-Buckets-IAM/create-role-2.png)
+![Khởi tạo ECS Task Execution Role](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/create-role-2.png)
 
 6. Sau khi tạo xong, tìm kiếm tên role `ecsTaskExecutionRole-realtime-collab-dev` tại thanh tìm kiếm danh sách Roles và nhấp vào nó để cấu hình tiếp.
 7. Thêm lần lượt **3 Inline Policies** sau đây bằng cách bấm vào dropdown **Add permissions** ở góc phải ➔ Chọn **Create inline policy**:
 
-![Create inline policy](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-role-create.png)
+![Create inline policy](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-role-create.png)
 
 ##### ➕ Inline Policy 1: Cấp quyền tải Docker Image từ ECR (`ecr-pull`)
 * Bấm vào tab **JSON** ở công cụ tạo policy và dán mã nguồn sau:
@@ -167,11 +167,11 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
   ]
 }
 ```
-![Tạo Inline Policy ecr-pull](/images/5-Workshop/5.5-S3-Buckets-IAM/ecr-pull-policy.png)
+![Tạo Inline Policy ecr-pull](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/ecr-pull-policy.png)
 
 * Bấm **Next**, đặt tên Policy là `ecr-pull` và chọn **Create policy**.
 
-![Tạo Inline Policy ecr-pull](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-policy-ecr.png)
+![Tạo Inline Policy ecr-pull](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-policy-ecr.png)
 
 ##### ➕ Inline Policy 2: Cấp quyền đẩy log lên CloudWatch (`cloudwatch-logs-ecs`)
 * Bấm **Add permissions** ➔ **Create inline policy**, chọn tab **JSON** và dán mã:
@@ -186,7 +186,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
   }]
 }
 ```
-![Tạo Inline Policy secrets-execution](/images/5-Workshop/5.5-S3-Buckets-IAM/cloudwatch-logs-ecs.png)
+![Tạo Inline Policy secrets-execution](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/cloudwatch-logs-ecs.png)
 
 * Bấm **Next**, đặt tên Policy là `cloudwatch-logs-ecs` và chọn **Create policy**.
 
@@ -208,7 +208,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
   }]
 }
 ```
-![Tạo Inline Policy secrets-execution](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-exec-policy-secrets.png)
+![Tạo Inline Policy secrets-execution](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-exec-policy-secrets.png)
 
 * Bấm **Next**, đặt tên Policy là `secrets-execution` và chọn **Create policy**.
 
@@ -224,7 +224,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
    - **Service or use case**: Chọn **Elastic Container Service** ➔ **Elastic Container Service Task**.
    - Bấm **Next**.
 
-   ![Khởi tạo ECS Task Role](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-task-role-create.png)
+   ![Khởi tạo ECS Task Role](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-task-role-create.png)
    
 3. Ở màn hình **Add permissions**: Bỏ qua việc chọn chính sách và bấm **Next**.
 4. Ở màn hình **Name, review, and create**:
@@ -232,7 +232,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
    - **Description**: Nhập `ECS Task Role for realtime-collab project runtime`.
    - Bấm **Create role**.
 
-![Khởi tạo ECS Task Role](/images/5-Workshop/5.5-S3-Buckets-IAM/ecsTaskRole-realtime-collab-dev.png)
+![Khởi tạo ECS Task Role](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/ecsTaskRole-realtime-collab-dev.png)
 
 5. Nhấp chọn vào role `ecsTaskRole-realtime-collab-dev` vừa tạo để cấu hình thêm.
 6. Thêm lần lượt **2 Inline Policies** sau đây thông qua nút **Add permissions** ➔ **Create inline policy**:
@@ -258,7 +258,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
   ]
 }
 ```
-![Tạo Inline Policy s3-file-storage](/images/5-Workshop/5.5-S3-Buckets-IAM/iam-task-policy-s3.png)
+![Tạo Inline Policy s3-file-storage](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/iam-task-policy-s3.png)
 
 * Bấm **Next**, đặt tên Policy là `s3-file-storage` và chọn **Create policy**.
 
@@ -277,7 +277,7 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
   }]
 }
 ```
-![Tạo Inline Policy secrets-task](/images/5-Workshop/5.5-S3-Buckets-IAM/secrets-task.png)
+![Tạo Inline Policy secrets-task](/images/5-Workshop/5.3-Data-Storage/5.3.1-S3-Buckets-IAM/secrets-task.png)
 
 * Bấm **Next**, đặt tên Policy là `secrets-task` và chọn **Create policy**.
 
