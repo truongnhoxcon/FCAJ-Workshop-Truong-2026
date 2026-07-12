@@ -23,6 +23,7 @@ The deployment must strictly follow the sequence below to ensure dependent resou
    - [Secrets Manager](5.2-Network-Security/5.2.1-Secrets-Manager/)
    - [VPC & Networking](5.2-Network-Security/5.2.2-VPC-Network/)
    - [Security Groups](5.2-Network-Security/5.2.3-Security-Groups/)
+   - [AWS Cognito User Pool](5.2-Network-Security/5.2.4-Cognito-Auth/)
 3. [Data & Storage](5.3-Data-Storage/)
    - [S3 Buckets & IAM Roles](5.3-Data-Storage/5.3.1-S3-Buckets-IAM/)
    - [RDS PostgreSQL](5.3-Data-Storage/5.3.2-RDS-Database/)
