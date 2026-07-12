@@ -10,40 +10,29 @@ Chúng ta sẽ khởi tạo một **Amazon Cognito User Pool** để quản lý 
 
 ---
 
-#### Bước 1: Khởi tạo Cognito User Pool
+#### Bước 1: Khởi tạo Cognito User Pool (User Directory)
+
+Giao diện mới của AWS Cognito cung cấp một trình hướng dẫn đơn giản hóa để cấu hình tài nguyên cho ứng dụng. Hãy thực hiện theo các bước sau:
 
 1. Truy cập dịch vụ **Amazon Cognito** ➔ Chọn **Create user pool**.
-2. **Configure sign-in experience (Cấu hình đăng nhập)**:
-   - Cognito user pool sign-in options: Tích chọn **Email**.
-   - Nhấn **Next**.
-3. **Configure security requirements (Cấu hình bảo mật)**:
-   - Password policy: Chọn **Cognito defaults** (Độ dài tối thiểu 8 ký tự, chứa số/chữ hoa/ký tự đặc biệt).
-   - Multi-factor authentication (MFA): Chọn **No MFA** (Phục vụ cho môi trường học tập/thử nghiệm).
-   - User account recovery: Tích chọn **Enable self-service account recovery** ➔ Chọn **Email only**.
-   - Nhấn **Next**.
-4. **Configure sign-up experience (Cấu hình đăng ký)**:
-   - Self-service sign-up: Tích chọn **Enable self-service sign-up**.
-   - Attribute verification: Tích chọn **Allow Cognito to automatically send messages to verify and confirm**.
-   - Attributes to verify: Chọn **Send email message, verify email address**.
-   - Required attributes: Đảm bảo đã tích chọn **email**.
-   - Nhấn **Next**.
-5. **Configure message delivery (Cấu hình gửi mail)**:
-   - Email provider: Chọn **Send email with Cognito** (Giới hạn gửi 50 email mỗi ngày, phù hợp cho thử nghiệm).
-   - Nhấn **Next**.
-6. **Integrate app (Tích hợp ứng dụng)**:
-   - User pool name: `realtime-collab-user-pool`
-   - App client: Chọn **Public client**.
-   - App client name: `realtime-collab-app-client`
-   - Client secret: Chọn **Don't generate a client secret** (Bắt buộc đối với ứng dụng chạy hoàn toàn ở trình duyệt Client-side SPA như React).
-   - Nhấn **Next**.
-7. **Review and create**: Kiểm tra lại thông tin cấu hình và nhấn **Create user pool**.
+2. Tại mục **Define your application (Định nghĩa ứng dụng)**:
+   - **Application type**: Chọn **Single-page application (SPA)** (Vì frontend của AntiCollab được phát triển bằng React/Vite).
+   - **Name your application**: Nhập tên ứng dụng, ví dụ: `realtime-collab-app`.
+3. Tại mục **Configure options (Cấu hình tùy chọn)**:
+   - **Options for sign-in identifiers**: Tích chọn **Email**.
+   - **Self-registration**: Tích chọn **Enable self-registration** (Cho phép người dùng tự đăng ký thông qua public APIs).
+   - **Required attributes for sign-up**: Nhấp chọn menu thả xuống và chọn **email**.
+4. Tại mục **Add a return URL - optional (Thêm URL phản hồi)**:
+   - Bạn có thể để trống hoặc điền `http://localhost` để thử nghiệm ở môi trường local.
+5. Nhấn nút **Create user directory (Tạo danh bạ người dùng)** ở góc dưới cùng bên phải để hoàn tất khởi tạo.
 
 ---
 
 #### Bước 2: Trích xuất thông tin kết nối
 
-1. Nhấp chọn vào User Pool vừa khởi tạo (`realtime-collab-user-pool`).
-2. Sao chép lại **User pool ID** ở phần thông tin chung (dạng `us-east-1_abcdef123`).
-3. Chuyển qua tab **App integration** ➔ cuộn xuống phần **App client list** ➔ Sao chép lại **Client ID** (dạng `3n70abcde...`).
+1. Nhấp chọn vào User Pool vừa khởi tạo trong danh sách của Cognito.
+2. Tại trang chi tiết của User Pool:
+   - Sao chép lại **User pool ID** ở phần thông tin chung phía trên (dạng `us-east-1_abcdef123`).
+3. Di chuyển qua tab **App integration** ➔ cuộn xuống phần **App client list** ➔ Sao chép lại **Client ID** (dạng `3n70abcde...`).
 
 Chúng ta sẽ sử dụng 2 giá trị này để cấu hình biến môi trường cho cả Backend và Frontend ở các bước tiếp theo.

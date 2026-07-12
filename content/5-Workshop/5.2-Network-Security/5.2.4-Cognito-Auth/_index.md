@@ -10,40 +10,29 @@ We will provision an **Amazon Cognito User Pool** to manage user registration, l
 
 ---
 
-#### Step 1: Create Cognito User Pool
+#### Step 1: Create Cognito User Pool (User Directory)
 
-1. Navigate to **Amazon Cognito** console ➔ Click **Create user pool**.
-2. **Configure sign-in experience**:
-   - Cognito user pool sign-in options: Check **Email**.
-   - Click **Next**.
-3. **Configure security requirements**:
-   - Password policy: **Cognito defaults** (Min length: 8, requires numbers/symbols).
-   - Multi-factor authentication (MFA): Select **No MFA** (for development).
-   - User account recovery: Check **Enable self-service account recovery** ➔ **Email only**.
-   - Click **Next**.
-4. **Configure sign-up experience**:
-   - Self-service sign-up: Check **Enable self-service sign-up**.
-   - Attribute verification: Check **Allow Cognito to automatically send messages to verify and confirm**.
-   - Attributes to verify: Select **Send email message, verify email address**.
-   - Required attributes: Ensure **email** is selected.
-   - Click **Next**.
-5. **Configure message delivery**:
-   - Email provider: Select **Send email with Cognito** (daily limit of 50 emails, ideal for development).
-   - Click **Next**.
-6. **Integrate app**:
-   - User pool name: `realtime-collab-user-pool`
-   - App client: Select **Public client**.
-   - App client name: `realtime-collab-app-client`
-   - Client secret: Select **Don't generate a client secret** (required for client-side single page applications).
-   - Click **Next**.
-7. **Review and create**: Review configuration settings and click **Create user pool**.
+AWS Cognito has introduced a streamlined wizard for configuring application resources. Follow these steps to set up the user directory:
+
+1. Navigate to the **Amazon Cognito** console ➔ Click **Create user pool**.
+2. Under **Define your application**:
+   - **Application type**: Select **Single-page application (SPA)** (since AntiCollab frontend is built on React/Vite).
+   - **Name your application**: Enter a descriptive name, e.g., `realtime-collab-app`.
+3. Under **Configure options**:
+   - **Options for sign-in identifiers**: Check **Email**.
+   - **Self-registration**: Check **Enable self-registration** (allows users to sign up via public APIs).
+   - **Required attributes for sign-up**: Click the dropdown and select **email**.
+4. Under **Add a return URL - optional**:
+   - For local testing, you can input `http://localhost`. For production, you will add your CloudFront domain. (You can also leave this blank as it is optional).
+5. Click **Create user directory** at the bottom right of the page.
 
 ---
 
 #### Step 2: Extract Credentials
 
-1. Click on the newly created User Pool (`realtime-collab-user-pool`).
-2. Copy the **User pool ID** (e.g., `us-east-1_abcdef123`).
-3. Navigate to **App integration** tab ➔ Scroll down to the **App client list** ➔ Copy the **Client ID** (e.g., `3n70abcde...`).
+1. Once the user directory is created, click on it in the Cognito console.
+2. In the pool details page:
+   - Copy the **User pool ID** (displayed at the top, e.g., `us-east-1_abcdef123`).
+3. Navigate to the **App integration** tab ➔ Scroll down to the **App client list** ➔ Copy the **Client ID** (e.g., `3n70abcde...`).
 
 We will use these credentials in both the backend and frontend configurations.
