@@ -1,9 +1,9 @@
 ---
 title: "Security Groups"
 date: 2024-06-29
-weight: 3
+weight: 4
 chapter: false
-pre: " <b> 5.2.3. </b> "
+pre: " <b> 5.2.4. </b> "
 ---
 
 We will configure Security Groups to act as virtual firewalls to control traffic for each layer of services.

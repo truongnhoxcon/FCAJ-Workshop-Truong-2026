@@ -45,18 +45,17 @@ The new CloudFront wizard simplifies creation using a 5-step process targeting t
 - **Origin type**: Select **Amazon S3**.
 - **S3 origin**: Choose or enter your S3 frontend bucket (e.g., `realtime-collab-frontend-<account-id>.s3.us-east-1.amazonaws.com`).
 - **Origin path**: Leave blank.
-- **Settings**:
-  - Check **Allow private S3 bucket access to CloudFront - Recommended** (keeps your S3 bucket private, routing all public access through CloudFront).
-  - **Origin access settings**: Choose **Origin access control settings (recommended)** ➔ click the **Create control setting** button, keep the default options, and click **Create**.
 - Click **Next**.
 
 ![Create Distribution - Specify Origin](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-origin-3.png)
 
 ##### Step 4: Enable security
-- Keep the default options for the Free plan ➔ Click **Next**.
+- Check **Use monitor mode** (this runs WAF in monitor/COUNT mode instead of BLOCK mode, which avoids blocking file uploads/avatar changes larger than 8KB) ➔ Click **Next**.
+![Create Distribution - Enable security](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-security.png)
 
 ##### Step 5: Review and create
 - Review all the configuration details ➔ Click **Create distribution**.
+![Create Distribution - Done](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-done.png)
 
 ##### Step 6: Copy policy
 1. Navigate to the newly created Distribution ➔ Select the **Origins** tab.

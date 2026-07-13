@@ -48,6 +48,7 @@ Paste the JSON below and replace the placeholders:
 - REPLACE_JWT_SECRET_ARN: The ARN of jwt-secret.
 - REPLACE_TWILIO_SECRET_ARN: The ARN of twilio/api-credentials.
 - REPLACE_REDIS_SECRET_ARN: The ARN of redis-auth-token.
+- REPLACE_COGNITO_SECRET_ARN: The ARN of realtime-collab-dev/cognito.
 
 ```json
 {
@@ -77,7 +78,9 @@ Paste the JSON below and replace the placeholders:
       { "name": "JWT_SECRET",          "valueFrom": "REPLACE_JWT_SECRET_ARN:secret::" },
       { "name": "TWILIO_ACCOUNT_SID",  "valueFrom": "REPLACE_TWILIO_SECRET_ARN:accountSid::" },
       { "name": "TWILIO_AUTH_TOKEN",   "valueFrom": "REPLACE_TWILIO_SECRET_ARN:authToken::" },
-      { "name": "REDIS_PASSWORD",     "valueFrom": "REPLACE_REDIS_SECRET_ARN" }
+      { "name": "REDIS_PASSWORD",      "valueFrom": "REPLACE_REDIS_SECRET_ARN" },
+      { "name": "COGNITO_USER_POOL_ID","valueFrom": "REPLACE_COGNITO_SECRET_ARN:userPoolId::" },
+      { "name": "COGNITO_CLIENT_ID",   "valueFrom": "REPLACE_COGNITO_SECRET_ARN:clientId::" }
     ],
     "healthCheck": {
       "command": ["CMD-SHELL", "wget -qO- http://localhost:3000/health || exit 1"],
@@ -124,7 +127,7 @@ aws ecs create-service \
   --cluster realtime-collab-dev \
   --service-name unified-backend \
   --task-definition realtime-collab-unified-backend \
-  --desired-count 1 \
+  --desired-count 2 \
   --launch-type FARGATE \
   --network-configuration 'awsvpcConfiguration={subnets=[REPLACE_PRIVATE_SUBNET_1_ID,REPLACE_PRIVATE_SUBNET_2_ID],securityGroups=[REPLACE_UNIFIED_BACKEND_SG_ID],assignPublicIp=DISABLED}' \
   --load-balancers '[

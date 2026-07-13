@@ -225,7 +225,8 @@ Dưới đây là các bước thiết lập chi tiết trên AWS Console:
       "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/db-password*",
       "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/jwt-secret*",
       "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/twilio/api-credentials*",
-      "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/redis-auth-token*"
+      "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/redis-auth-token*",
+      "arn:aws:secretsmanager:us-east-1:<account-id>:secret:realtime-collab-dev/cognito*"
     ]
   }]
 }

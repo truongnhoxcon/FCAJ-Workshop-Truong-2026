@@ -44,9 +44,21 @@ The AWS infrastructure design is detailed below:
 - **Amazon RDS (PostgreSQL)**: The primary relational database running in Multi-AZ configuration (synchronous replication between Master DB in AZ1 and Standby DB in AZ2) storing users, messages, servers, and channels.
 - **Amazon ElastiCache (Redis)**: Highly available Redis cache running in Multi-AZ (asynchronous replication from Primary node in AZ1 to Replica node in AZ2) used as a Redis Pub/Sub adapter to sync socket events across containers and cache user presence states.
 - **Amazon S3 & VPC Gateway Endpoint**: Includes S3 Frontend for static web hosting and S3 Files for attachments. ECS Tasks connect to S3 Files via internal VPC S3 Gateway Endpoint to optimize network performance and security.
-- **AWS Secrets Manager & CloudWatch**: Securely stores credentials (RDS password, JWT, Twilio API keys, Redis AUTH Token) injected into tasks at startup. Outbound application logs are streamed to CloudWatch Logs.
+- **AWS Secrets Manager & CloudWatch**: Securely stores credentials (RDS password, JWT, Twilio API keys, Redis AUTH Token, Cognito credentials) injected into tasks at startup. Outbound application logs are streamed to CloudWatch Logs.
 - **NAT Gateway & Internet Gateway (IGW)**: Provides one-way outbound internet routing for private subnets to pull images from ECR, retrieve secrets, send logs, and fetch WebRTC ICE/TURN tokens from Twilio APIs.
 - **AWS IAM**: Enforces least privilege access using ecsTaskRole (access to S3, Secrets Manager) and ecsTaskExecutionRole (ECR image pulls, CloudWatch logs) to maintain security boundaries.
+- **AWS Cognito**: Provides centralized identity management, handling registration, login, and secure JSON Web Token (JWT) validation without storing passwords on the database backend.
+
+*Architectural Flow (Routing Steps)*
+The data flow and service interactions correspond to the numbered badges in the architecture diagram:
+- **1. Authenticate (No. 1)**: Client (Frontend) sends login credentials directly to the **AWS Cognito User Pool**, which authenticates and returns a JSON Web Token (JWT).
+- **2. Access Application (No. 2)**: User accesses the application via the secure HTTPS/WSS entry point on **CloudFront**, passing through the **AWS WAF** firewall (set to monitor/COUNT mode).
+- **3. Serve Static Content (No. 3)**: CloudFront routes static asset requests via Origin Access Control (OAC) to the **S3 Frontend** bucket to serve the React application.
+- **4. Dynamic Routing (No. 4)**: API calls (`/api/*`) or WebSocket handshakes (`/ws/*`) are forwarded by CloudFront to the **Application Load Balancer (ALB)**. Client includes the Cognito JWT in the `Authorization` header.
+- **5. Backend Processing (No. 5)**: ALB routes the traffic to the active **ECS Tasks** in Private Subnets. Express routes and SocketAuth middleware validate and verify the JWT with AWS Cognito public keys. (Upon task startup, the container uses Task Execution Role to pull the Docker image from **Amazon ECR**, and uses Task Role to fetch credentials from **AWS Secrets Manager**).
+- **6. Database & Cache Sync (No. 6)**: The task connects to **RDS PostgreSQL (Port 5432 SSL)** for persistent storage and **ElastiCache Redis (Port 6379 TLS)** as a Pub/Sub adapter to synchronize WebSocket events across containers.
+- **7. File Upload (No. 7)**: ECS Task generates a Pre-signed URL for S3 upload. The Client uploads files directly to **S3 Files** bucket through the internal **VPC S3 Gateway Endpoint** to optimize security and speed.
+- **8. WebRTC Signaling (No. 8)**: The task integrates with **Twilio API** to retrieve STUN/TURN configurations (ICE Servers) through NAT Gateway and Internet Gateway (IGW) for peer-to-peer audio/video streaming (WebRTC).
 
 *Component Design*
 - **Client (Frontend)**: ReactJS application hosted statically on S3 using useWebSocket.js for Socket.io message exchange and presence updates, and useWebRTC.js for WebRTC calls.
@@ -58,55 +70,36 @@ The AWS infrastructure design is detailed below:
 *Implementation Phases*
 The project was executed by the team in 4 distinct phases:
 1. **Phase 1: Requirements Analysis & App Development (Weeks 7 - 9)**: Team members analyzed the real-time chat and video calling specifications; developed the ReactJS frontend replicating a Discord-like UI and the Node.js backend (Express and Socket.io); and integrated local PostgreSQL and Redis databases.
-2. **Phase 2: Architecture Design & Local Verification (Week 10)**: Designed the AWS Architecture Diagram on draw.io, performed end-to-end local integration testing using Docker Compose, and developed Terraform scripts to model and verify basic cloud networks.
-3. **Phase 3: Console Infrastructure Deployment (Week 11)**: Manually configured and provisioned the production cloud infrastructure (VPC Multi-AZ, Secrets Manager, Security Groups, S3, RDS PostgreSQL Multi-AZ, ElastiCache Redis Multi-AZ, ALB, CloudFront + WAF, and ECS Cluster/Service Fargate) on the AWS Console; built container images and pushed to ECR.
-4. **Phase 4: System Integration Testing & Handover (Week 12)**: Executed system integration tests on AWS; validated WebSocket messaging, WebRTC group calling (via Twilio), and S3 file attachments; audited error logs via CloudWatch Logs; completed self-evaluation reports, and cleaned up AWS resources.
+2. **Phase 2: Architecture Diagram & Local Testing (Week 10)**: Designed detailed AWS architecture diagram on draw.io; integrated and tested application locally via Docker Compose; used Terraform to validate routing and VPC structures on AWS.
+3. **Phase 3: AWS Console Service Deployment (Week 11)**: Deployed all infrastructure manually via AWS console (VPC Multi-AZ, Secrets Manager, Security Groups, S3, RDS PostgreSQL Multi-AZ, ElastiCache Redis Multi-AZ, ALB, CloudFront + WAF, and ECS Fargate); pushed Docker images to ECR.
+4. **Phase 4: Integration Testing & Handover (Week 12)**: Executed system integration tests on AWS; verified WebSocket chat, WebRTC calls (via Twilio), and S3 file uploads; analyzed logs via CloudWatch; wrote final reports and cleaned up sandbox resources.
 
 *Technical Requirements*
-- **Environment**: Docker Desktop locally. AWS CLI v2 configured. Terraform >= 1.6 for IaC deployment.
-- **Frontend**: NodeJS >= 18 for ReactJS building, Socket.io-client for websockets, Lucide React for UI icons.
-- **Backend**: NodeJS >= 18, PostgreSQL relational DB, Redis for cache & pub/sub, Twilio API keys for TURN server.
+- **Runtime Environment**: Docker Desktop locally. AWS CLI v2 configured for deployment. Terraform >= 1.6 for infrastructure verification.
+- **Frontend**: NodeJS >= 18 for building ReactJS. Socket.io-client for WebSockets, Lucide React for UI icons.
+- **Backend**: NodeJS >= 18. PostgreSQL for persistent DB, Redis for cache and pub/sub. Twilio credentials configured for STUN/TURN WebRTC signaling.
 
 ---
 
-### 5. Roadmap & Milestones
-The team's project roadmap is divided into the following milestones:
-- **Milestone 1 (Weeks 7 - 9)**:
-  - Design relational database schemas and finalize code for Unified Backend and React Frontend.
-  - Run local end-to-end developer testing and resolve layout/logic issues.
-- **Milestone 2 (Week 10)**:
-  - Sketch the detailed AWS network architecture diagram on draw.io.
-  - Complete local application stack integration testing via Docker Compose.
-  - Write Terraform scripts to test and validate network and routing structures.
-- **Milestone 3 (Week 11)**:
-  - Provision VPC, Secrets Manager, Security Groups, S3, and IAM Roles on the AWS Console.
-  - Deploy highly available Multi-AZ database engines (RDS PostgreSQL and ElastiCache Redis).
-  - Wrap backend services into Docker images, push to ECR, and configure target groups, ALB, CloudFront + WAF, and ECS Fargate.
-- **Milestone 4 (Week 12)**:
-  - Perform live environment integration testing for WebSockets and WebRTC group calling.
-  - Complete the internship technical report, self-evaluation, and delete sandbox resources.
-
----
-
-### 6. Budget Estimation
-Estimated infrastructure costs in us-east-1:
+### 5. Budget Estimation
+Estimated infrastructure costs in us-east-1 based on the actual report from the AWS Pricing Calculator:
 
 *Monthly Estimated Infrastructure Costs*
-- **Amazon ECS Fargate**: 2 tasks running continuously (0.5 vCPU, 1 GB RAM) **$18.00/month**.
-- **Amazon RDS (PostgreSQL)**: Instance class db.t3.medium, Multi-AZ, 20 GB GP3 storage **$30.00/month**.
-- **Amazon ElastiCache (Redis)**: Instance class cache.t3.micro Multi-AZ (1 replica) for pub/sub sync **$24.00/month**.
-- **Application Load Balancer (ALB)**: 1 ALB for backend traffic routing **$22.26/month**.
-- **Amazon CloudFront**: Caches static assets & terminates SSL (Free Tier includes 1 TB outbound bandwidth) **$2.00/month** (when exceeding free tier).
-- **Amazon S3**: File storage & Frontend static hosting (< 50 GB) **$1.20/month**.
-- **AWS Secrets Manager**: Stores 4 secret keys **$1.60/month** ($0.40/secret).
-- **AWS CloudWatch**: Collects log streams and metric histories **$3.00/month**.
-- **Network / Bandwidth**: Data transfer to Internet **$2.00/month**.
+- **Amazon ECS Fargate**: 2 tasks running continuously (0.5 vCPU, 1 GB RAM per task) **$36.04/month**.
+- **Amazon RDS (PostgreSQL)**: Instance class db.t3.medium, Multi-AZ, 20 GB GP3 storage **$110.45/month**.
+- **Amazon ElastiCache (Redis)**: Instance class cache.t3.micro Multi-AZ (1 replica) for pub/sub sync **$24.82/month**.
+- **Application Load Balancer (ALB)**: 1 ALB for backend traffic routing **$22.27/month**.
+- **Amazon CloudFront**: Caches static assets & terminates SSL (Free Plan Tier) **$0.00/month**.
+- **Amazon S3**: File storage & Frontend static hosting (50 GB S3 Standard) **$1.15/month**.
+- **AWS Secrets Manager**: Stores 5 secret keys **$2.05/month** ($0.40/secret + minimal API request cost).
+- **AWS CloudWatch**: Collects log streams and metric histories **$3.00/month** (Minimum estimate).
+- **Network / Bandwidth**: Data transfer to Internet **$2.00/month** (Minimum estimate).
 
-**Total Monthly Infrastructure Cost**: **$104.06/month**
+**Total Monthly Infrastructure Cost**: **$201.78/month**
 
 ---
 
-### 7. Risk Assessment
+### 6. Risk Assessment
 *Risk Matrix*
 - **Risk 1: WebRTC direct P2P call fails due to symmetric NAT/firewalls.**
   - *Impact*: High.
@@ -123,7 +116,7 @@ Estimated infrastructure costs in us-east-1:
 
 ---
 
-### 8. Expected Outcomes
+### 7. Expected Outcomes
 *Technical Enhancements*
 - E2E real-time community chat platform with text message delivery latencies under 200ms.
 - Stable WebRTC audio/video group calls.

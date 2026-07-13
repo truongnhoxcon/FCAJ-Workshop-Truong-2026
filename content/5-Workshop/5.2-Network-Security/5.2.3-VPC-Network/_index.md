@@ -1,9 +1,9 @@
 ---
 title: "VPC & Networking"
 date: 2024-06-29
-weight: 2
+weight: 3
 chapter: false
-pre: " <b> 5.2.2. </b> "
+pre: " <b> 5.2.3. </b> "
 ---
 
 We will construct a secure Multi-AZ virtual network containing Public Subnets for the Load Balancer and Private Subnets to isolate our application services.

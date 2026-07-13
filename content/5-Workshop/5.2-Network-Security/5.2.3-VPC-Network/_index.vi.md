@@ -1,9 +1,9 @@
 ---
 title: "VPC và Mạng"
 date: 2024-06-29
-weight: 2
+weight: 3
 chapter: false
-pre: " <b> 5.2.2. </b> "
+pre: " <b> 5.2.3. </b> "
 ---
 
 Chúng ta sẽ thiết kế một hạ tầng mạng ảo an toàn Multi-AZ có chứa phân vùng mạng công cộng (Public Subnets) cho Load Balancer và phân vùng mạng riêng tư (Private Subnets) cô lập các dịch vụ.

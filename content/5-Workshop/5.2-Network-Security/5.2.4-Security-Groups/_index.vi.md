@@ -1,9 +1,9 @@
 ---
 title: "Security Groups"
 date: 2024-06-29
-weight: 3
+weight: 4
 chapter: false
-pre: " <b> 5.2.3. </b> "
+pre: " <b> 5.2.4. </b> "
 ---
 
 Chúng ta sẽ tạo các nhóm bảo mật (Security Groups) đóng vai trò tường lửa ảo kiểm soát lưu lượng ra vào cho từng lớp dịch vụ.

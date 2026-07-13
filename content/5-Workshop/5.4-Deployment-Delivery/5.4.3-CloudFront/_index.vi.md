@@ -46,19 +46,17 @@ Màn hình tạo mới hiện tại của CloudFront được thiết kế tối
 - **Origin type**: Chọn **Amazon S3**.
 - **S3 origin**: Chọn S3 bucket frontend của bạn (Dạng: `realtime-collab-frontend-<account-id>.s3.us-east-1.amazonaws.com`).
 - **Origin path**: Để trống.
-- **Settings**:
-  - Tích chọn **Allow private S3 bucket access to CloudFront - Recommended** (Để đảm bảo S3 ở chế độ Private, chỉ cho phép CloudFront truy cập).
-  - **Origin access settings**: Chọn **Origin access control settings (recommended)** ➔ Nhấn nút **Create control setting**, giữ nguyên các cấu hình mặc định rồi nhấn **Create**.
 - Bấm **Next**.
-
 ![Khởi tạo Distribution - Specify origin](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-origin-3.png)
 
 
 ##### Bước 4: Enable security
-- Giữ các tùy chọn mặc định của gói Free ➔ Bấm **Next**.
+- Tích chọn **Use monitor mode** ➔ Bấm **Next**.
+![Khởi tạo Distribution - Enable security](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-security.png)
 
 ##### Bước 5: Review and create
 - Kiểm tra lại toàn bộ thông tin ➔ Bấm **Create distribution**.
+![Khởi tạo Distribution - Done](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-done.png)
 
 ##### Bước 6: Copy policy
 1. Truy cập vào Distribution vừa tạo ➔ Chọn tab **Origins**.
@@ -163,6 +161,6 @@ Khi người dùng truy cập trực tiếp các đường dẫn dynamic trên t
 3. Bấm **Save changes** để lưu lại.
 
 
-Quá trình deploy các thay đổi sẽ diễn ra từ **5 - 10 phút**. Khi Status chuyển sang trạng thái hoạt động bình thường, hãy sao chép lại địa chỉ **Distribution domain name** (dạng `xxxxxxxxxxxx.cloudfront.net`). Đây chính là Endpoint HTTPS duy nhất để người dùng truy cập vào ứng dụng của bạn.
+Quá trình deploy các thay đổi sẽ diễn ra từ **5 - 10 phút**. Khi Status chuyển sang trạng thái hoạt động bình thường, hãy sao chép lại địa chỉ **Distribution domain name** (dạng `xxxxxxxxxxxx.cloudfront.net`). Đây chính là Endpoint HTTPS duy nhất để truy cập vào ứng dụng.
 
 ![Địa chỉ Domain name CloudFront hoàn thành](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-domain.png)

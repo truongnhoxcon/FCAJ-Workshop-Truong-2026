@@ -10,6 +10,7 @@ pre: " <b> 5.2. </b> "
 
 Trong phần này, chúng ta sẽ cấu hình các thông tin bí mật (secrets), mạng ảo và các quy tắc tường lửa trên AWS.
 
-1. [Secrets Manager](5.2.1-Secrets-Manager/)
-2. [VPC và Mạng](5.2.2-VPC-Network/)
-3. [Security Groups](5.2.3-Security-Groups/)
+1. [Cognito Auth](5.2.1-Cognito-Auth/)
+2. [Secrets Manager](5.2.2-Secrets-Manager/)
+3. [VPC và Mạng](5.2.3-VPC-Network/)
+4. [Security Groups](5.2.4-Security-Groups/)
