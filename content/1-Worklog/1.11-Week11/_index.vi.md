@@ -17,7 +17,7 @@ pre: " <b> 1.11. </b> "
 | 3   | - Triển khai các dịch vụ được sử dụng trong dự án trên AWS Console. | 30/06/2026   | 30/06/2026      |
 | 4   | - Sửa lỗi phát sinh trong quá trình triển khai.                     | 01/07/2026   | 01/07/2026      |
 | 5   | - Chạy thử nghiệm hệ thống.                                         | 02/07/2026   | 02/07/2026      |
-| 6   | - Chỉnh sửa và hoàn thiện Workshop các bước triển khai.             | 03/07/2026   | 03/07/2026      |
+| 6   | - Làm Workshop các bước triển khai hệ thống lên AWS.             | 03/07/2026   | 03/07/2026      |
 
 ### Kết quả đạt được tuần 11:
 

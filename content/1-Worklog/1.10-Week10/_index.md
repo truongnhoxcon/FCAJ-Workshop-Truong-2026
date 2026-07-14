@@ -18,8 +18,8 @@ pre: " <b> 1.10. </b> "
 | 2   | - Research system requirements and begin designing and drawing the AWS Architecture on draw.io                            | 22/06/2026 | 22/06/2026      |
 | 3   | - Set up docker-compose.yaml file integrating Backend (port 3000), PostgreSQL (port 5432), and Redis (port 6379) services | 23/06/2026 | 23/06/2026      |
 | 4   | - Deploy and run local testing of the entire application using Docker Compose                                             | 24/06/2026 | 24/06/2026      |
-| 5   | - Write infrastructure configuration source code using Terraform                                                          | 25/06/2026 | 25/06/2026      |
-| 6   | - Use Terraform commands to run rapid network prototyping of infrastructure architectures on AWS                          | 26/06/2026 | 26/06/2026      |
+| 5   | - Write infrastructure configuration source code using Terraform. <br> - Use Terraform commands to run rapid network prototyping of infrastructure architectures on AWS.                           | 25/06/2026 | 25/06/2026      |
+| 6   | - Review source code, check error logs, and debug issues arising during the testing of AWS infrastructure configuration using Terraform.                           | 26/06/2026 | 26/06/2026      |
 
 ### Week 10 Achievements:
 

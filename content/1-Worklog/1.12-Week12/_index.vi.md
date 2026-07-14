@@ -15,7 +15,8 @@ pre: " <b> 1.12. </b> "
 | Thứ | Công việc                                                  | Ngày bắt đầu | Ngày hoàn thành |
 | --- | ---------------------------------------------------------- | ------------ | --------------- |
 | 2   | - Kiểm thử và fix lỗi hệ thống sau khi triển khai lên AWS. | 06/07/2026   | 06/07/2026      |
-| 3   | - Làm báo cáo thực tập.                                    | 07/07/2026   | 07/07/2026      |
-| 4   | - Chỉnh sửa các tài liệu liên quan đến quá trình thực tập. | 08/07/2026   | 08/07/2026      |
-| 5   | - Hoàn thiện báo cáo cuối kỳ.                              | 09/07/2026   | 09/07/2026      |
+| 3   | Thực hiện kiểm thử tải nhẹ để đánh giá hiệu năng chịu lỗi của hệ thống.                                    | 07/07/2026   | 07/07/2026      |
+| 4   | - Sửa lại Workshop chuẩn sau khi triển khai, kiểm thử và fix lỗi thành công. | 08/07/2026   | 08/07/2026      |
+| 5   | - Hoàn thiện báo cáo Workshop cuối kỳ.                              | 09/07/2026   | 09/07/2026      |
+| 6   | - Hoàn thiện báo cáo thực tập và các phiếu liên quan để xin mộc thực tập.                              | 10/07/2026   | 10/07/2026      |
 

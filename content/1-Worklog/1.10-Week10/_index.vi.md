@@ -18,8 +18,8 @@ pre: " <b> 1.10. </b> "
 | 2   | - Nghiên cứu yêu cầu hệ thống và bắt đầu thiết kế, vẽ sơ đồ AWS Architecture trên draw.io.                              | 22/06/2026   | 22/06/2026      |
 | 3   | - Thiết lập file docker-compose.yaml tích hợp dịch vụ Backend (port 3000), PostgreSQL (port 5432) và Redis (port 6379). | 23/06/2026   | 23/06/2026      |
 | 4   | - Triển khai chạy thử nghiệm cục bộ toàn bộ ứng dụng bằng Docker Compose.                                               | 24/06/2026   | 24/06/2026      |
-| 5   | - Viết mã nguồn cấu hình hạ tầng bằng Terraform.                                                                        | 25/06/2026   | 25/06/2026      |
-| 6   | - Sử dụng lệnh Terraform để khởi tạo thử nghiệm nhanh các kiến trúc hạ tầng trên AWS.                                   | 26/06/2026   | 26/06/2026      |
+| 5   | - Viết mã nguồn cấu hình hạ tầng bằng Terraform. <br> - Sử dụng lệnh Terraform để khởi tạo thử nghiệm nhanh các kiến trúc hạ tầng trên AWS.                                                                        | 25/06/2026   | 25/06/2026      |
+| 6   | - Tiến hành rà soát mã nguồn, kiểm tra nhật ký lỗi và gỡ lỗi các vấn đề phát sinh trong quá trình chạy thử nghiệm cấu hình hạ tầng AWS bằng Terraform.                                  | 26/06/2026   | 26/06/2026      |
 
 ### Kết quả đạt được tuần 10:
 

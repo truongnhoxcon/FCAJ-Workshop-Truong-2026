@@ -15,6 +15,7 @@ pre: " <b> 1.12. </b> "
 | Day | Task | Start Date | Completion Date |
 | --- | --- | --- | --- |
 | 2   | - Test and fix system errors after deploying to AWS. | 06/07/2026 | 06/07/2026 |
-| 3   | - Write the internship report. | 07/07/2026 | 07/07/2026 |
-| 4   | - Edit documents related to the internship. | 08/07/2026 | 08/07/2026 |
-| 5   | - Finalize the final internship report. | 09/07/2026 | 09/07/2026 |
+| 3   | - Perform light load testing to evaluate system fault tolerance. | 07/07/2026 | 07/07/2026 |
+| 4   | - Revise the standard Workshop guide after successful deployment, testing, and debugging. | 08/07/2026 | 08/07/2026 |
+| 5   | - Finalize the final Workshop report. | 09/07/2026 | 09/07/2026 |
+| 6   | - Finalize the internship report and related forms to apply for the internship stamp. | 10/07/2026 | 10/07/2026 |
