@@ -164,3 +164,5 @@ Khi người dùng truy cập trực tiếp các đường dẫn dynamic trên t
 Quá trình deploy các thay đổi sẽ diễn ra từ **5 - 10 phút**. Khi Status chuyển sang trạng thái hoạt động bình thường, hãy sao chép lại địa chỉ **Distribution domain name** (dạng `xxxxxxxxxxxx.cloudfront.net`). Đây chính là Endpoint HTTPS duy nhất để truy cập vào ứng dụng.
 
 ![Địa chỉ Domain name CloudFront hoàn thành](/images/5-Workshop/5.4-Deployment-Delivery/5.4.3-CloudFront/cf-domain.png)
+
+* Truy cập và trải nghiệm trực tiếp hệ thống tại địa chỉ: **`https://d2gqfyhv3cphx1.cloudfront.net`**
